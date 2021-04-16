@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
+<title><?= $this->title = "Каталог" ?></title>
 <!-- Shop Page Start -->
 <div class="main-shop-page pb-60">
             <div class="container">
@@ -14,12 +15,28 @@ use yii\helpers\Url;
                                 <div class="group-title">
                                     <h2>categories</h2>
                                 </div>
-                                <ul>
-                                    <?php foreach( $category as $item ): ?>
-                                        <li><a href="<?= Url::to([ 'view','id' => $item->id ]) ?>"> <?= $item->title ?> </a></li>
-                                    <?php endforeach ?>
 
-                                    <li><a href="#">Electrical (9)</a></li>
+                                
+
+                                <ul>                               
+                                    <?php foreach( $category as $mainGroup ): ?>
+                                        
+                                            <ul class="middle-menu-list menuSideBar">
+                                                <li><a href="<?= Url::to([ 'view','id' => $mainGroup->id ]) ?>"><?= $mainGroup->title ?><i class="fa fa-angle-down"></i></a>
+                                                            <!-- Home Version Dropdown Start -->
+                                                            <ul class="ht-dropdown dropdown-style-one">                                                    
+                                                                <?php foreach( $subCategory as $subGroup ): ?>                                                
+                                                                    <?php if($subGroup->maingroup_id == $mainGroup->id): ?>
+                                                                        <li> <a href="<?= Url::to([ 'view','id' => $subGroup->id ]) ?>"> <?= $subGroup->title ?> </a></li>
+                                                                    <?php endif ?>
+                                                                <?php endforeach ?>                                                    
+                                                            </ul>
+                                                            <!-- Home Version Dropdown End -->
+                                                </li>
+                                            </ul>                                  
+                                            
+                                        </ul>
+                                    <?php endforeach ?>                                    
                                     
                                 </ul>
                             </div>
