@@ -11,4 +11,14 @@ class AppController extends Controller
         $this->view->title = \Yii::$app->name;
         return parent::beforeAction($action);
     }
+
+    protected function setMeta($title = null, $keyWords = null, $description = null)
+    {
+        $this->view->title = $title;
+        $this->view->registerMetaTag(['name' => 'keywords', 'content' => $keyWords]);
+        $this->view->registerMetaTag(['name' => 'description', 'content' => $description]);
+
+        
+    }
 }
+
