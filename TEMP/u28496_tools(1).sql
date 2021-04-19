@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 16 2021 г., 11:14
+-- Время создания: Апр 19 2021 г., 13:00
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.4.5
 
@@ -666,24 +666,26 @@ INSERT INTO `items` (`id`, `vendor`, `maingroup_id`, `subgroup_id`, `item`, `pri
 
 CREATE TABLE `main_group` (
   `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(150) DEFAULT NULL
+  `title` varchar(150) DEFAULT NULL,
+  `descrption` varchar(500) DEFAULT NULL,
+  `key_words` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `main_group`
 --
 
-INSERT INTO `main_group` (`id`, `title`) VALUES
-(3, 'Насосы'),
-(4, 'Садовая техника'),
-(5, 'Сварочные аппараты'),
-(6, 'Стабилизаторы'),
-(7, 'ЭЛЕКТРОГЕНЕРАТОРЫ'),
-(8, 'Инструмент'),
-(9, 'Инструмент Ресанта'),
-(10, 'Оборудование'),
-(11, 'ЭЛЕКТРОУСТАНОВОЧНЫЕ ИЗДЕЛИЯ'),
-(12, 'Ручной инструмент');
+INSERT INTO `main_group` (`id`, `title`, `descrption`, `key_words`) VALUES
+(3, 'Насосы', 'Сосут все и вся', 'Насосные Насосы'),
+(4, 'Садовая техника', NULL, NULL),
+(5, 'Сварочные аппараты', NULL, NULL),
+(6, 'Стабилизаторы', NULL, NULL),
+(7, 'ЭЛЕКТРОГЕНЕРАТОРЫ', NULL, NULL),
+(8, 'Инструмент', NULL, NULL),
+(9, 'Инструмент Ресанта', NULL, NULL),
+(10, 'Оборудование', NULL, NULL),
+(11, 'ЭЛЕКТРОУСТАНОВОЧНЫЕ ИЗДЕЛИЯ', NULL, NULL),
+(12, 'Ручной инструмент', NULL, NULL);
 
 -- --------------------------------------------------------
 
