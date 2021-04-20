@@ -232,6 +232,7 @@ use yii\helpers\Url;
                                     <li><a  class="active" data-toggle="tab" href="#list-view"><i class="fa fa-list-ul"></i></a></li>
                                     <li><span class="grid-item-list"> Items 1-12 of 13</span></li>
                                 </ul>
+                                <h3>Поиск: "<?= Html::encode($q) ?>"</h3>
                             </div>
                             <!-- Toolbar Short Area Start -->
                             <div class="main-toolbar-sorter f-right">

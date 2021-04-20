@@ -37,7 +37,7 @@ class CategoryWidget extends Widget
         
         //если кэша нет - записываем все в кэш
 
-        \Yii::$app->cache->set('categoryWidget',$this->menuHtml, 86400);
+        \Yii::$app->cache->set('categoryWidget',$this->menuHtml, 86400);//86400
 
         return $this->menuHtml;
     }
@@ -56,13 +56,13 @@ class CategoryWidget extends Widget
 
         foreach($category as $mainGroup){
             $str .= '<ul class="middle-menu-list menuSideBar">
-            <li><a href="'. Url::to([ 'view','categoryid' => $mainGroup->id ]) .'">
+            <li><a href="'. Url::to([ 'index','categoryid' => $mainGroup->id ]) .'">
                 '. $mainGroup->title .'<i class="fa fa-angle-down"></i></a>                        
                 <ul class="ht-dropdown dropdown-style-one">   ';
                 
             foreach($sub_category as $subGroup){
                 if($subGroup->maingroup_id == $mainGroup->id){
-                   $str .= '<li> <a href="'. Url::to([ 'view','id' => $subGroup->id ]) .'">'. $subGroup->title .'</a></li>';
+                   $str .= '<li> <a href="'. Url::to([ 'index','subgroup_id' => $subGroup->id ]) .'">'. $subGroup->title .'</a></li>';
                 }
             }
             $str .='</ul> </li> </ul> </ul>';

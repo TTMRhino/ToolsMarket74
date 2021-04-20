@@ -54,7 +54,9 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                'shop/<categoryid:\d+>' => 'shop/view',
+                'shop/<categoryid:\d+><page:\d+>' => 'shop/index',
+                'shop/<categoryid:\d+>' => 'shop/index',
+                
             ],
         ],
         

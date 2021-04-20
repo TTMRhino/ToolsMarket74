@@ -55,16 +55,18 @@ AppAsset::register($this);
                             </div>                        
                         </div>
                         <!-- Header Top left End -->
+
                         <!-- Search Box Start -->                                        
                         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                             <div class="search-box-view">
-                                <form action="#">
-                                    <input type="text" class="email" placeholder="Search Your Product" name="product">
+                                <form action="<?= Url::to('shop/search', $schema = true) ?>" method="get">
+                                    <input type="text" class="email" placeholder="Search Your Product" name="q">
                                     <button type="submit" class="submit"></button>
                                 </form>
                             </div>                                           
                         </div>
-                        <!-- Search Box End --> 
+                        <!-- Search Box End -->
+
                         <!-- Header Top Right Start -->                                       
                         <div class="col-lg-4 col-md-12">
                             <div class="header-top-right">
