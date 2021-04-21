@@ -1,4 +1,3 @@
-
 /*================================================
 [  Table of contents  ]
 ==================================================
@@ -28,17 +27,17 @@
 
 ================================================*/
 
-(function ($) {
+(function($) {
     "use Strict";
     /*--------------------------
     1. Newsletter Popup
     ---------------------------*/
-    setTimeout(function () {
+    setTimeout(function() {
         $('.popup_wrapper').css({
             "opacity": "1",
             "visibility": "visible"
         });
-        $('.popup_off').on('click', function () {
+        $('.popup_off').on('click', function() {
             $(".popup_wrapper").fadeOut(500);
         })
     }, 2500);
@@ -53,20 +52,20 @@
     /*----------------------------
     3 Checkout Page Activation
     -----------------------------*/
-     $('.categorie-title').on('click', function () {
-    $('.vertical-menu-list').slideToggle();
+    $('.categorie-title').on('click', function() {
+        $('.vertical-menu-list').slideToggle();
     });
 
-    $('#showlogin').on('click', function () {
+    $('#showlogin').on('click', function() {
         $('#checkout-login').slideToggle();
     });
-    $('#showcoupon').on('click', function () {
+    $('#showcoupon').on('click', function() {
         $('#checkout_coupon').slideToggle();
     });
-    $('#cbox').on('click', function () {
+    $('#cbox').on('click', function() {
         $('#cbox_info').slideToggle();
     });
-    $('#ship-box').on('click', function () {
+    $('#ship-box').on('click', function() {
         $('#ship-box-info').slideToggle();
     });
 
@@ -100,7 +99,7 @@
             responsive: {
                 0: {
                     items: 1,
-                    autoplay:true
+                    autoplay: true
                 },
                 480: {
                     items: 2
@@ -117,43 +116,43 @@
             }
 
         })
-    /*----------------------------------------------------
-    6. New Upsell Product Activation
-    -----------------------------------------------------*/
+        /*----------------------------------------------------
+        6. New Upsell Product Activation
+        -----------------------------------------------------*/
     $('.new-upsell-pro').owlCarousel({
-            loop: false,
-            nav: true,
-            dots: false,
-            smartSpeed: 1000,
+        loop: false,
+        nav: true,
+        dots: false,
+        smartSpeed: 1000,
 
-            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-            margin: 30,
-            responsive: {
-                0: {
-                    items: 1,
-                    autoplay:true
-                },
-                480: {
-                    items: 2
-                },
-                768: {
-                    items: 2
-                },
-                1000: {
-                    items: 3
-                },
-                1200: {
-                    items: 4
-                }
+        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+        margin: 30,
+        responsive: {
+            0: {
+                items: 1,
+                autoplay: true
+            },
+            480: {
+                items: 2
+            },
+            768: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            },
+            1200: {
+                items: 4
             }
+        }
 
-        })
+    })
 
     /*----------------------------------------------------
     7. Side Product Activation
     -----------------------------------------------------*/
     $('.side-product-list-active')
-        .on('changed.owl.carousel initialized.owl.carousel', function (event) {
+        .on('changed.owl.carousel initialized.owl.carousel', function(event) {
             $(event.target)
                 .find('.owl-item').removeClass('last')
                 .eq(event.item.index + event.page.size - 1).addClass('last');
@@ -167,9 +166,9 @@
             responsive: {
                 0: {
                     items: 1,
-                    autoplay:true
+                    autoplay: true
                 },
-               480: {
+                480: {
                     items: 2
                 },
                 768: {
@@ -185,7 +184,7 @@
     8. Best Seller Activation
     -----------------------------------------------------*/
     $('.best-seller-pro-active')
-        .on('changed.owl.carousel initialized.owl.carousel', function (event) {
+        .on('changed.owl.carousel initialized.owl.carousel', function(event) {
             $(event.target)
                 .find('.owl-item').removeClass('last')
                 .eq(event.item.index + event.page.size - 1).addClass('last');
@@ -199,7 +198,7 @@
             responsive: {
                 0: {
                     items: 1,
-                    autoplay:true
+                    autoplay: true
                 },
                 480: {
                     items: 2
@@ -229,7 +228,7 @@
             responsive: {
                 0: {
                     items: 1,
-                    autoplay:true
+                    autoplay: true
                 },
                 480: {
                     items: 2
@@ -244,22 +243,22 @@
                     items: 4
                 }
             }
-    })
-    /*----------------------------------------------------
-    10. Brand Banner Activation
-    -----------------------------------------------------*/
-$('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function (event) {
+        })
+        /*----------------------------------------------------
+        10. Brand Banner Activation
+        -----------------------------------------------------*/
+    $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function(event) {
         $(event.target)
 
-                .find('.owl-item').removeClass('last')
-                .eq(event.item.index + event.page.size - 1).addClass('last');
+        .find('.owl-item').removeClass('last')
+            .eq(event.item.index + event.page.size - 1).addClass('last');
 
-            $(event.target)
-                .find('.owl-item').removeClass('first')
-                .eq(event.item.index).addClass('first')
+        $(event.target)
+            .find('.owl-item').removeClass('first')
+            .eq(event.item.index).addClass('first')
 
 
-        }).owlCarousel({
+    }).owlCarousel({
         loop: false,
         nav: false,
         dots: false,
@@ -268,7 +267,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
         responsive: {
             0: {
                 items: 1,
-                autoplay:true
+                autoplay: true
             },
             480: {
                 items: 3
@@ -286,51 +285,51 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
     11. Blog Activation
     -----------------------------------------------------*/
     $('.blog-active').owlCarousel({
-        loop: false,
-        nav: true,
-        dots: false,
-        smartSpeed: 1000,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        margin: 30,
-        responsive: {
-            0: {
-                items: 1,
-                autoplay:true
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 3
+            loop: false,
+            nav: true,
+            dots: false,
+            smartSpeed: 1000,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            margin: 30,
+            responsive: {
+                0: {
+                    items: 1,
+                    autoplay: true
+                },
+                768: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
             }
-        }
-    })
-    /*----------------------------------------------------
-    12. Blog two Activation
-    -----------------------------------------------------*/
+        })
+        /*----------------------------------------------------
+        12. Blog two Activation
+        -----------------------------------------------------*/
     $('.blog-active2').owlCarousel({
-        loop: false,
-        nav: true,
-        dots: false,
-        smartSpeed: 1000,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        margin: 30,
-        responsive: {
-            0: {
-                items: 1,
-                autoplay:true
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 2
+            loop: false,
+            nav: true,
+            dots: false,
+            smartSpeed: 1000,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            margin: 30,
+            responsive: {
+                0: {
+                    items: 1,
+                    autoplay: true
+                },
+                768: {
+                    items: 2
+                },
+                1000: {
+                    items: 2
+                }
             }
-        }
-    })
-    /*----------------------------
-    13. WOW Js Activation
-    -----------------------------*/
+        })
+        /*----------------------------
+        13. WOW Js Activation
+        -----------------------------*/
     new WOW().init();
 
     /*----------------------------
@@ -351,7 +350,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
     /*----------------------------
     15. Sticky-Menu Activation
     ------------------------------ */
-    $(window).on('scroll', function () {
+    $(window).on('scroll', function() {
         if ($(this).scrollTop() > 150) {
             $('.header-sticky').addClass("sticky");
         } else {
@@ -367,7 +366,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
         min: 0,
         max: 80,
         values: [0, 74],
-        slide: function (event, ui) {
+        slide: function(event, ui) {
             $("#amount").val("$" + ui.values[0] + "  $" + ui.values[1]);
         }
     });
@@ -400,36 +399,36 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
     /*----------------------------------------------------
     18. Best Seller Activation
     -----------------------------------------------------*/
-    $('.best-seller-pro').on('changed.owl.carousel initialized.owl.carousel', function (event) {
-        $(event.target)
+    $('.best-seller-pro').on('changed.owl.carousel initialized.owl.carousel', function(event) {
+            $(event.target)
                 .find('.owl-item').removeClass('last')
                 .eq(event.item.index + event.page.size - 1).addClass('last');
         }).owlCarousel({
-        loop: false,
-        nav: true,
-        dots: false,
-        smartSpeed: 1000,
-        navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-        margin: 0,
-        responsive: {
-            0: {
-                items: 1,
-                autoplay:true
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 2
-            },
-            1000: {
-                items: 1
+            loop: false,
+            nav: true,
+            dots: false,
+            smartSpeed: 1000,
+            navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            margin: 0,
+            responsive: {
+                0: {
+                    items: 1,
+                    autoplay: true
+                },
+                480: {
+                    items: 2
+                },
+                768: {
+                    items: 2
+                },
+                1000: {
+                    items: 1
+                }
             }
-        }
-    })
-    /*----------------------------------------------------
-    19. Best Product Activation
-    -----------------------------------------------------*/
+        })
+        /*----------------------------------------------------
+        19. Best Product Activation
+        -----------------------------------------------------*/
     $('.best-seller-pro-two')
         .owlCarousel({
             loop: false,
@@ -440,7 +439,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
             responsive: {
                 0: {
                     items: 1,
-                    autoplay:true
+                    autoplay: true
                 },
                 768: {
                     items: 3
@@ -450,7 +449,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
                 }
             }
         })
-    
+
     /*-------------------------------------
     20. Blog Realted Post activation
     --------------------------------------*/
@@ -464,7 +463,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
         responsive: {
             0: {
                 items: 1,
-                autoplay:true
+                autoplay: true
             },
             480: {
                 items: 1
@@ -472,7 +471,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
             768: {
                 items: 2
             },
-            992:{
+            992: {
                 margin: 29,
                 items: 2
             },
@@ -481,15 +480,15 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
             }
         }
     })
-    
+
     /*----------------------------------------------------
     21.Best Seller  Unique Activation
     -----------------------------------------------------*/
-    $('.best-seller-unique').on('changed.owl.carousel initialized.owl.carousel', function (event) {
+    $('.best-seller-unique').on('changed.owl.carousel initialized.owl.carousel', function(event) {
         $(event.target)
-                .find('.owl-item').removeClass('last')
-                .eq(event.item.index + event.page.size - 1).addClass('last');
-        }).owlCarousel({
+            .find('.owl-item').removeClass('last')
+            .eq(event.item.index + event.page.size - 1).addClass('last');
+    }).owlCarousel({
         loop: false,
         nav: true,
         dots: false,
@@ -499,7 +498,7 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
         responsive: {
             0: {
                 items: 1,
-                autoplay:true
+                autoplay: true
             },
             768: {
                 items: 2
@@ -509,6 +508,34 @@ $('.brand-banner').on('changed.owl.carousel initialized.owl.carousel', function 
             }
         }
     })
-     
-    
+
+
+
+
+
+    /*----------------------------------------------------
+    22.Cart
+    -----------------------------------------------------*/
+
+
+    $(".add-to-cart").on('click', function() {
+        let id = $(this).data('id');
+        $.ajax({
+            url: '/cart/add',
+            data: { id: id },
+            type: 'GET',
+            success: function(res) {
+
+                console.log(res);
+            },
+            error: function(res) {
+
+                alert("Error!");
+            }
+        });
+
+        return false;
+    });
+
+
 })(jQuery);

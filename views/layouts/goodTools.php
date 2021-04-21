@@ -95,24 +95,14 @@ AppAsset::register($this);
                             <div class="middle-menu pull-right">
                                 <nav>
                                     <ul class="middle-menu-list">
-                                        <li><a href="<?= Url::home() ?>">home<i class="fa "></i></a>
+                                        <li><a href="<?= Url::home() ?>">Домой<i class="fa "></i></a>
                                           
                                         </li>
-                                        <li><a href="about.html">about us</a></li>                                        
-                                        <li><a href="<?= Url::to('shop/index') ?>">shop<i class="fa"></i></a></li>                                        
+                                        <li><a href="about.html">О нас</a></li>                                        
+                                        <li><a href="<?= Url::toRoute('shop/index', $schema = true) ?>">Товары<i class="fa"></i></a></li>                                        
                                       
-                                        <li><a href="#">pages<i class="fa fa-angle-down"></i></a>
-                                            <!-- Home Version Dropdown Start -->
-                                            <ul class="ht-dropdown dropdown-style-two">
-                                                <li><a href="login.html">Login Page</a></li>
-                                                <li><a href="register.html">Register Page</a></li>
-                                                <li><a href="404.html">404 Page</a></li>
-                                                <li><a href="forgot-password.html">Forgot Password Page</a></li>
-                                                <li><a href="account.html">Account Page</a></li>
-                                            </ul>
-                                            <!-- Home Version Dropdown End -->
-                                        </li>
-                                        <li><a href="contact.html">contact us</a></li>                                        
+                                        
+                                        <li><a href="contact.html">Контакты</a></li>                                        
                                     </ul>
                                 </nav>
                             </div>
@@ -123,13 +113,15 @@ AppAsset::register($this);
                             <div class="cart-box text-right">
                                 <ul>                                                    
                                 
-                                    <li><a href="#"><i class="fa fa-shopping-basket"></i><span class="cart-counter">2</span></a>
+                                    <li><a href="<?= Url::to(['cart/index']) ?>"><i class="fa fa-shopping-basket"></i><span class="cart-counter">2</span></a>
                                         <ul class="ht-dropdown main-cart-box">
                                             <li>
+
+
                                                 <!-- Cart Box Start -->
                                                 <div class="single-cart-box">
                                                     <div class="cart-img">
-                                                        <a href="#"><img src="img/menu/1.jpg" alt="cart-image"></a>
+                                                        <a href="#"><img src="/img/menu/1.jpg" alt="cart-image"></a>
                                                     </div>
                                                     <div class="cart-content">
                                                         <h6><a href="product.html">Products Name</a></h6>
@@ -141,7 +133,7 @@ AppAsset::register($this);
                                                 <!-- Cart Box Start -->
                                                 <div class="single-cart-box">
                                                     <div class="cart-img">
-                                                        <a href="#"><img src="img/menu/2.jpg" alt="cart-image"></a>
+                                                        <a href="#"><img src="/img/menu/2.jpg" alt="cart-image"></a>
                                                     </div>
                                                     <div class="cart-content">
                                                         <h6><a href="product.html">Products Name</a></h6>
@@ -154,10 +146,13 @@ AppAsset::register($this);
                                                 <div class="cart-footer fix">
                                                     <h5>total :<span class="f-right">$698.00</span></h5>
                                                     <div class="cart-actions">
-                                                        <a class="checkout" href="checkout.html">Checkout</a>
+                                                        <a class="checkout" href="<?= Url::to(['cart/index']) ?>">Checkout</a>
                                                     </div>
                                                 </div>
                                                 <!-- Cart Footer Inner End -->
+
+
+
                                             </li>
                                         </ul>
                                     </li>
@@ -172,14 +167,7 @@ AppAsset::register($this);
                                         <li><a href="<?= Url::home() ?>">home</a></li>
                                         <li><a href="<?= Url::toRoute('shop/index') ?>">shop</a></li>
                                        
-                                        <li><a href="#">pages</a>
-                                            <!-- Mobile Menu Dropdown Start -->
-                                            <ul>
-                                                <li><a href="login.html">login Page</a></li>
-                                                <li><a href="register.html">Register Page</a></li>
-                                                <li><a href="404.html">404 Page</a></li>
-                                            </ul>
-                                            <!-- Mobile Menu Dropdown End -->
+                                        
                                         </li>
                                         <li><a href="about.html">about us</a></li>
                                         <li><a href="contact.html">contact us</a></li>

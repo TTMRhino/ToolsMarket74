@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 
-class HomeController extends appController
+class HomeController extends AppController
 {
     public function actionIndex()
     {

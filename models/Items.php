@@ -26,4 +26,15 @@ class Items extends ActiveRecord
         ];
     }
 
+
+    public function getCategory()
+    {
+        return $this->hasOne(Category::class,['id'=>'maingroup_id']);
+    }
+
+    public function getSubCategory()
+    {
+        return $this->hasOne(SubCategory::class,['id'=>'subgroup_id']);
+    }
+
 }

@@ -6,7 +6,7 @@ use app\models\SubCategory;
 use app\models\Items;
 use yii\data\Pagination;
 
-class ShopController extends appController
+class ShopController extends AppController
 {
     public function actionIndex($categoryid = null,$subgroup_id = null)
     {       
@@ -57,5 +57,15 @@ class ShopController extends appController
         $items = $query->offset($pages->offset)->limit($pages->limit)->all();
 
         return $this->render('search',compact('items','pages','q'));
+    }
+
+
+    /**Продкт */
+
+    public function actionProduct($vendor)    
+    {
+        $item = Items::findOne(['vendor'=>$vendor]);
+
+        return $this->render('product',compact('item'));
     }
 }
