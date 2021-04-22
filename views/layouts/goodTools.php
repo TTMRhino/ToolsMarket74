@@ -110,41 +110,21 @@ AppAsset::register($this);
                         <!-- Search Box End -->
                         <!-- Cartt Box Start -->
                         <div class="col-lg-3 col-sm-7 col-7">
-                            <div class="cart-box text-right">
-                                <ul>                                                    
+                            <div class="cart-box text-right" >
+                                <ul>                                             
                                 
-                                    <li><a href="<?= Url::to(['cart/index']) ?>"><i class="fa fa-shopping-basket"></i><span class="cart-counter">2</span></a>
+                                    <li><a href="<?= Url::to(['cart/index']) ?>"><i class="fa fa-shopping-basket"></i><span class="cart-counter"><?= $_SESSION['cart.qty'] ?></span></a>
                                         <ul class="ht-dropdown main-cart-box">
-                                            <li>
+                                            <li id="cartBox">
+
+                                                
 
 
-                                                <!-- Cart Box Start -->
-                                                <div class="single-cart-box">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img src="/img/menu/1.jpg" alt="cart-image"></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h6><a href="product.html">Products Name</a></h6>
-                                                        <span>1 × $399.00</span>
-                                                    </div>
-                                                    <a class="del-icone" href="#"><i class="fa fa-window-close-o"></i></a>
-                                                </div>
-                                                <!-- Cart Box End -->
-                                                <!-- Cart Box Start -->
-                                                <div class="single-cart-box">
-                                                    <div class="cart-img">
-                                                        <a href="#"><img src="/img/menu/2.jpg" alt="cart-image"></a>
-                                                    </div>
-                                                    <div class="cart-content">
-                                                        <h6><a href="product.html">Products Name</a></h6>
-                                                        <span>2 × $299.00</span>
-                                                    </div>
-                                                    <a class="del-icone" href="#"><i class="fa fa-window-close-o"></i></a>
-                                                </div>
-                                                <!-- Cart Box End -->
+                                                
+                                               
                                                 <!-- Cart Footer Inner Start -->
                                                 <div class="cart-footer fix">
-                                                    <h5>total :<span class="f-right">$698.00</span></h5>
+                                                    <h5>total :<span class="f-right"><?= $_SESSION['cart.sum'] ?>р.</span></h5>
                                                     <div class="cart-actions">
                                                         <a class="checkout" href="<?= Url::to(['cart/index']) ?>">Checkout</a>
                                                     </div>
@@ -164,13 +144,13 @@ AppAsset::register($this);
                             <div class="mobile-menu">
                                 <nav>
                                     <ul>
-                                        <li><a href="<?= Url::home() ?>">home</a></li>
-                                        <li><a href="<?= Url::toRoute('shop/index') ?>">shop</a></li>
+                                        <li><a href="<?= Url::home() ?>">Домой</a></li>
+                                        <li><a href="<?= Url::toRoute('shop/index') ?>">Товары</a></li>
                                        
                                         
                                         </li>
-                                        <li><a href="about.html">about us</a></li>
-                                        <li><a href="contact.html">contact us</a></li>
+                                        <li><a href="about.html">О Нас</a></li>
+                                        <li><a href="contact.html">Контакты</a></li>
                                     </ul>
                                 </nav>
                             </div>

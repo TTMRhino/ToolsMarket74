@@ -525,8 +525,8 @@
             data: { id: id },
             type: 'GET',
             success: function(res) {
-
-                console.log(res);
+                if (!res) alert("Ошибка!");
+                showCart(res);
             },
             error: function(res) {
 
@@ -536,6 +536,11 @@
 
         return false;
     });
+
+    function showCart(cart) {
+        console.log(cart);
+        $('#cartBox').html(cart);
+    }
 
 
 })(jQuery);
