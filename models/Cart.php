@@ -1,9 +1,9 @@
 <?php
 namespace app\models;
 
-use yii\bootstrap\Modal;
+use yii\base\Model;
 
-class Cart extends Modal
+class Cart extends Model
 {
     public function addToCart($item, $qty = 1 )
     {

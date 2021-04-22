@@ -20,26 +20,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach($_SESSION['cart'] as $item):?>
                                         <tr>
                                             <td class="product-thumbnail">
                                                 <a href="#"><img src="/img/products/1.jpg" alt="cart-image" /></a>
                                             </td>
-                                            <td class="product-name"><a href="#">Products Name Here</a></td>
-                                            <td class="product-price"><span class="amount">£165.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£165.00</td>
+                                            <td class="product-name"><a href="#"><?= $item['title'] ?></a></td>
+                                            <td class="product-price"><span class="amount"><?= $item['price'] ?>р.</span></td>
+                                            <td class="product-quantity"><input type="number" value="<?= $item['qty'] ?>" /></td>
+                                            <td class="product-subtotal"><?= $item['price'] * $item['qty'] ?></td>
                                             <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
                                         </tr>
-                                        <tr>
-                                            <td class="product-thumbnail">
-                                                <a href="#"><img src="/img/products/2.jpg" alt="cart-image" /></a>
-                                            </td>
-                                            <td class="product-name"><a href="#">Products Name Here</a></td>
-                                            <td class="product-price"><span class="amount">£50.00</span></td>
-                                            <td class="product-quantity"><input type="number" value="1" /></td>
-                                            <td class="product-subtotal">£50.00</td>
-                                            <td class="product-remove"> <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a></td>
-                                        </tr>
+                                    <?php endforeach ?>
+                                        
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -56,7 +50,7 @@
                                 <!-- Cart Totals Start -->
                                 <div class="col-lg-4 col-md-12">
                                     <div class="cart_totals">
-                                        <h2>Cart Totals</h2>
+                                        <h2>итого</h2>
                                         <br />
                                         <table>
                                             <tbody>
@@ -65,9 +59,9 @@
                                                     <td><span class="amount">$215.00</span></td>
                                                 </tr>
                                                 <tr class="order-total">
-                                                    <th>Total</th>
+                                                    <th>Всего:</th>
                                                     <td>
-                                                        <strong><span class="amount">$215.00</span></strong>
+                                                        <strong><span class="amount"><?= $_SESSION['cart.sum'] ?> руб.</span></strong>
                                                     </td>
                                                 </tr>
                                             </tbody>

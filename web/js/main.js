@@ -520,6 +520,7 @@
 
     $(".add-to-cart").on('click', function() {
         let id = $(this).data('id');
+
         $.ajax({
             url: '/cart/add',
             data: { id: id },
@@ -529,7 +530,6 @@
                 showCart(res);
             },
             error: function(res) {
-
                 alert("Error!");
             }
         });
@@ -538,7 +538,6 @@
     });
 
     function showCart(cart) {
-        console.log(cart);
         $('#cartBox').html(cart);
     }
 
