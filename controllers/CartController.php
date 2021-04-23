@@ -10,15 +10,12 @@ class CartController extends AppController
 {
     public function actionIndex()
     {
-        //$session = \Yii::$app->session;
-        //$session->open();
-
+        
         return $this->render('cart');
     }
 
     public function actionAdd($id)
     {
-        
         $item = Items::findOne(['id'=>$id]);
         
         if(empty($item)){
@@ -32,11 +29,43 @@ class CartController extends AppController
         $cart = new Cart();
         $cart->addToCart($item);
 
-       if(\Yii::$app->request->isAjax){
-           
-            return $this->renderPartial('cartmini',compact($session));
+        if(\Yii::$app->request->isAjax){           
+            return $this->renderPartial('cartmini',compact($session));           
         }
 
         return $this->redirect(\Yii::$app->request->referrer);        
+    }
+
+    
+
+    public function actionDelItem($id)
+    {      
+        $session = \Yii::$app->session;
+        $session->open();
+
+        $cart = new Cart();
+        $cart->recalc($id);
+       
+
+        if(\Yii::$app->request->isAjax){           
+            return $this->renderPartial('cartmini',compact($session));           
+        }
+        return $this->redirect(\Yii::$app->request->referrer);
+    }
+
+    public function actionShowTableCart($id)    
+    {
+        $session = \Yii::$app->session;
+        $session->open();
+
+        $cart = new Cart();
+        $cart->recalc($id);
+
+        if(\Yii::$app->request->isAjax){
+           
+            return $this->renderPartial('carttable',compact($session));
+        }
+
+        return $this->redirect(\Yii::$app->request->referrer);
     }
 }

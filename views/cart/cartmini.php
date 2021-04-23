@@ -5,7 +5,7 @@ use yii\helpers\Url;
 <li><a href="<?= Url::to(['cart/index']) ?>"><i class="fa fa-shopping-basket"></i><span class="cart-counter"><?= $_SESSION['cart.qty'] ? $_SESSION['cart.qty'] : 0 ?></span></a>
     <ul class="ht-dropdown main-cart-box">
         <li>
-        
+
             <?php if (isset($_SESSION['cart'])) : ?>
                 <?php foreach ($_SESSION['cart'] as $cartItem) : ?>
                     <!-- Cart Box Start -->
@@ -17,7 +17,14 @@ use yii\helpers\Url;
                             <h6><a href="product.html"><?= $cartItem['title'] ?></a></h6>
                             <span><?= $cartItem['qty'] ?> × <?= $cartItem['price'] ?></span>
                         </div>
-                        <a class="del-icone" href="#" data-id="<?= $cartItem['id'] ?>"><i class="fa fa-window-close-o"></i></a>
+
+                        <a class="del-icone delete"  href="#" 
+                            data-id="<?= $cartItem['id'] ?>">
+                            <i class="fa fa-window-close-o"></i>
+                        </a>
+
+                        
+
                     </div>
                     <!-- Cart Box End -->
 

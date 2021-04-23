@@ -1,14 +1,6 @@
-<!-- Cart Main Area Start -->
-<div class="cart-main-area pb-80 pb-sm-50">
-            <div class="container">
-               <h2 class="text-capitalize sub-heading">cart</h2>
-                <div class="row" >
-                    <div class="col-md-12">
-                        <!-- Form Start -->
-                        <form action="#" id="table">
                             <!-- Table Content Start -->
                             <div class="table-content table-responsive mb-50">
-                                <table >
+                                <table>
                                     <thead>
                                         <tr>
                                             <th class="product-thumbnail">Image</th>
@@ -34,7 +26,8 @@
                                              </td>
                                             <td class="product-subtotal"><?= $item['price'] * $item['qty'] ?></td>
                                             <td class="product-remove " > 
-                                                <a href="#" class="delete" data-id="<?= $item['id'] ?>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                <a href="#" class="delete" data-id="<?= $item['id'] ?>"><i class="fa fa-times" aria-hidden="true"></i></a>                                                
+                                                
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -47,7 +40,10 @@
                             <div class="row">
                                <!-- Cart Button Start -->
                                 <div class="col-lg-8 col-md-7">
-                                   
+                                    <div class="buttons-cart">
+                                        <input type="submit" value="Update Cart" />
+                                        <a href="#">Continue Shopping</a>
+                                    </div>
                                 </div>
                                 <!-- Cart Button Start -->
                                 <!-- Cart Totals Start -->
@@ -77,11 +73,4 @@
                                 <!-- Cart Totals End -->
                             </div>
                             <!-- Row End -->
-                        </form>
-                        <!-- Form End -->
-                    </div>
-                </div>
-                 <!-- Row End -->
-            </div>
-        </div>
-        <!-- Cart Main Area End -->
+                      

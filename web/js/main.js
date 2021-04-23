@@ -541,5 +541,61 @@
         $('#cartBox').html(cart);
     }
 
+    function showTable(table) {
+        $('#table').html(table);
+    }
+
+    $('[id^="count"]').on('click', function() {
+        let id = $(this).data('id');
+        let val = $(this).val();
+        console.log('Val = ' + val);
+        $.ajax({
+            url: '/cart/add',
+            data: { id: id },
+            type: 'GET',
+            success: function(res) {
+                if (!res) alert("Ошибка!");
+                showCart(res);
+            },
+            error: function(res) {
+                alert("Error!");
+            }
+        });
+
+    });
+
+    /** удаление товара из мини корзины (и обновление вида)*/
+    $('#cartBox,#table').on('click', '.delete', function() {
+        console.log('Клик по кнопке удалить');
+        let id = $(this).data('id');
+        $.ajax({
+            url: '/cart/del-item',
+            data: { id: id },
+            type: 'GET',
+            success: function(res) {
+                if (!res) alert("Ошибка!");
+                showCart(res);
+            },
+            error: function(res) {
+                alert("Error!");
+            }
+        });
+        //Обновляем  таблицу-козину 
+        $.ajax({
+            url: '/cart/show-table-cart',
+            data: { id: id },
+            type: 'GET',
+            success: function(res) {
+                if (!res) alert("Ошибка!");
+                showTable(res);
+            },
+            error: function(res) {
+                alert("Error!");
+            }
+        });
+
+    });
+
+
 
 })(jQuery);

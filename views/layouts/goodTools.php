@@ -129,7 +129,12 @@ AppAsset::register($this);
                                                         <h6><a href="product.html"><?= $cartItem['title'] ?></a></h6>
                                                         <span><?= $cartItem['qty'] ?> × <?= $cartItem['price'] ?></span>
                                                     </div>
-                                                        <a class="del-icone" href="#" data-id="<?= $cartItem['id'] ?>"><i class="fa fa-window-close-o"></i></a>
+
+                                                    <a class="del-icone delete"  href="#" 
+                                                        data-id="<?= $cartItem['id'] ?>">
+                                                        <i class="fa fa-window-close-o"></i>
+                                                    </a>
+                                                        
                                                     </div>
                                                     <!-- Cart Box End -->
 

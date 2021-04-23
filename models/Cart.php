@@ -23,4 +23,22 @@ class Cart extends Model
 
         $_SESSION['cart.sum'] = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $qty * $item->price : $qty * $item->price;
     }
+
+
+    public function recalc($id)
+    {
+        if(!isset($_SESSION['cart'][$id])){
+            return false;
+        }
+
+        $qtyMinus = $_SESSION['cart'][$id]['qty'];
+        $sumMinus = $_SESSION['cart'][$id]['qty'] * $_SESSION['cart'][$id]['price'];
+
+        $_SESSION['cart.qty'] -= $qtyMinus;
+        $_SESSION['cart.sum'] -=$sumMinus;
+
+        
+            unset($_SESSION['cart'][$id]);
+        
+    }
 }
