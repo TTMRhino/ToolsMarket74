@@ -53,13 +53,14 @@ class CartController extends AppController
         return $this->redirect(\Yii::$app->request->referrer);
     }
 
-    public function actionShowTableCart($id)    
+    public function actionShowTableCart($id, $qty=1)    
     {
         $session = \Yii::$app->session;
         $session->open();
 
         $cart = new Cart();
         $cart->recalc($id);
+        
 
         if(\Yii::$app->request->isAjax){
            
@@ -67,5 +68,24 @@ class CartController extends AppController
         }
 
         return $this->redirect(\Yii::$app->request->referrer);
+    }
+
+    public function actionChangeCart($id, $qty)
+    {
+        $item = Items::findOne(['id'=>$id]);
+        
+        if(empty($item)){
+            return false; 
+        }
+
+        $session = \Yii::$app->session;
+        $session->open();
+        //$session->destroy();
+
+        $cart = new Cart();
+        $cart->addToCart($item, $qty);
+
+        return $this->renderPartial('cartmini',compact($session));
+
     }
 }

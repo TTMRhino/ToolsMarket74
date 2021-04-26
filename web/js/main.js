@@ -545,27 +545,47 @@
         $('#table').html(table);
     }
 
-    $('[id^="count"]').on('click', function() {
-        let id = $(this).data('id');
-        let val = $(this).val();
-        console.log('Val = ' + val);
+    function refreshTableCart(id) {
+        //Обновляем  таблицу-козину 
         $.ajax({
-            url: '/cart/add',
+            url: '/cart/show-table-cart',
             data: { id: id },
             type: 'GET',
             success: function(res) {
                 if (!res) alert("Ошибка!");
-                showCart(res);
+                showTable(res);
             },
             error: function(res) {
                 alert("Error!");
             }
         });
+    }
 
+    //счетчик колличесва в большой корзине
+    $('#tableId').on('click', '.plus, .minus', function() {
+        let id = $(this).data('id'),
+            qty = $(this).data('qty');
+
+        $('.cart-table .overlay').fadeIn();
+        $.ajax({
+            url: '/cart/change-cart',
+            data: { id: id, qty: qty },
+            type: 'GET',
+            success: function(res) {
+                if (!res) alert("Error product!");
+                location = '/cart/index';
+            },
+            error: function(res) {
+                alert("Error!");
+            }
+        });
+        console.log('PLUS');
     });
 
+
+
     /** удаление товара из мини корзины (и обновление вида)*/
-    $('#cartBox,#table').on('click', '.delete', function() {
+    $('#cartBox').on('click', '.delete', function() {
         console.log('Клик по кнопке удалить');
         let id = $(this).data('id');
         $.ajax({
@@ -581,18 +601,7 @@
             }
         });
         //Обновляем  таблицу-козину 
-        $.ajax({
-            url: '/cart/show-table-cart',
-            data: { id: id },
-            type: 'GET',
-            success: function(res) {
-                if (!res) alert("Ошибка!");
-                showTable(res);
-            },
-            error: function(res) {
-                alert("Error!");
-            }
-        });
+        refreshTableCart(id);
 
     });
 
