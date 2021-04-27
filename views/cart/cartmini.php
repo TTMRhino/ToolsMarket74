@@ -14,7 +14,7 @@ use yii\helpers\Url;
                             <a href="#"><img src="/img/menu/1.jpg" alt="cart-image"></a>
                         </div>
                         <div class="cart-content">
-                            <h6><a href="product.html"><?= $cartItem['title'] ?></a></h6>
+                            <h6><a href="<?= Url::to(['cart/index']) ?>"><?= $cartItem['title'] ?></a></h6>
                             <span><?= $cartItem['qty'] ?> × <?= $cartItem['price'] ?></span>
                         </div>
 

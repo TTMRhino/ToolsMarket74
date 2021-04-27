@@ -31,12 +31,18 @@ use yii\helpers\Url;
                                         <?php foreach($_SESSION['cart'] as $item):?>
                                             <tr>
                                                 <td class="product-thumbnail">
-                                                    <a href="#"><img src="/img/products/1.jpg" alt="cart-image" /></a>
+                                                    <a href="/img/products/l<?= $item['clearVendor']?>.jpg" data-fancybox="images">
+                                                        <img src="/img/products/l<?= $item['clearVendor']?>.jpg" alt="cart-image" />
+                                                    </a>
                                                 </td>
-                                                <td class="product-name"><a href="#"><?= $item['title'] ?></a></td>
+                                                <td class="product-name">
+                                                    <a href="<?= Url::to(['product/view', 'vendor' => $item['vendor']]) ?>">
+                                                        <?= $item['title'] ?>
+                                                    </a>
+                                                </td>
                                                 <td class="product-price"><span class="amount"><?= $item['price'] ?>р.</span></td>
 
-                                                <td class="product-quantity" id="tableId">
+                                                <td class="product-quantity" >
                                                     <button type="button" data-qty="1" data-id="<?= $item['id']?>" class="btn btn-light plus">+</button>
                                                         <input id="count<?= $item['id'] ?>" 
                                                             data-id="<?= $item['id']?>"
@@ -61,6 +67,7 @@ use yii\helpers\Url;
                             <div class="row">
                                <!-- Cart Button Start -->
                                 <div class="col-lg-8 col-md-7">
+                                    
                                    
                                 </div>
                                 <!-- Cart Button Start -->
@@ -84,7 +91,7 @@ use yii\helpers\Url;
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="#">Proceed to Checkout</a>
+                                            <a href="<?= Url::to('checkout') ?>">Proceed to Checkout</a>
                                         </div>
                                     </div>
                                 </div>

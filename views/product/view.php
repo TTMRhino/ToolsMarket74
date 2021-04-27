@@ -1,3 +1,8 @@
+<?php
+use yii\helpers\Html;
+use yii\helpers\Url;
+
+?>
  <!-- Product Thumbnail Start -->
  <div class="main-product-thumbnail pb-60">
             <div class="container">
@@ -7,9 +12,9 @@
                         <!-- Thumbnail Large Image start -->
                         <div class="tab-content">
                             <div id="thumb1" class="tab-pane active">
-                                <a data-fancybox="images" href="/img/products/1.jpg"><img src="/img/products/1.jpg" alt="product-view"></a>
+                                <a data-fancybox="images" href="/img/products/l<?= $item->getVendorClear() ?>.jpg"><img src="/img/products/1.jpg" alt="product-view"></a>
                             </div>
-                            <div id="thumb2" class="tab-pane">
+                           <!-- <div id="thumb2" class="tab-pane">
                                 <a data-fancybox="images" href="/img/products/2.jpg"><img src="/img/products/2.jpg" alt="product-view"></a>
                             </div>
                             <div id="thumb3" class="tab-pane">
@@ -17,19 +22,19 @@
                             </div>
                             <div id="thumb4" class="tab-pane">
                                 <a data-fancybox="images" href="/img/products/4.jpg"><img src="/img/products/4.jpg" alt="product-view"></a>
-                            </div>
-                        </div>
+                            </div>-->
+                        </div> 
                         <!-- Thumbnail Large Image End -->
 
                         <!-- Thumbnail Image End -->
-                        <div class="product-thumbnail">
+                       <!-- <div class="product-thumbnail">
                             <div class="thumb-menu nav">
                                     <a class="active" data-toggle="tab" href="#thumb1"> <img src="/img/products/1.jpg" alt="product-thumbnail"></a>
                                     <a data-toggle="tab" href="#thumb2"> <img src="/img/products/2.jpg" alt="product-thumbnail"></a>
                                     <a data-toggle="tab" href="#thumb3"> <img src="/img/products/3.jpg" alt="product-thumbnail"></a>
                                     <a data-toggle="tab" href="#thumb4"> <img src="/img/products/4.jpg" alt="product-thumbnail"></a>
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Thumbnail image end -->
                     </div>
                     <!-- Main Thumbnail Image End -->
@@ -55,19 +60,17 @@
                             <div class="pro-ref mb-15">
                                 <p><span class="in-stock">На складе</span><span class="sku">50шт.</span></p>
                             </div>
+                            
                             <div class="box-quantity">
                                 <form action="#">
-                                    <input class="number" id="numeric" type="number" min="1" value="1">
-                                    <a class="add-cart" href="cart.html">в корзину</a>
+                                   <!-- <button type="button" data-qty="1" data-id="<?= $item->id?>" class="btn btn-light plus">+</button>
+                                    <input id="count<?= $item->id ?>" data-id="<?= $item->id?>" type="text" value="<?= $_SESSION['cart'][$item->id]['qty'] ?>"/>
+                                    <button type="button"  class="btn btn-light minus" data-qty="-1" data-id="<?= $item->id?>">-</button>
+                                    -->
+                                    <a class="add-cart" href="<?= Url::to(['cart/add','id'=>$item->id]) ?>">в корзину</a>
                                 </form>
                             </div>
-                            <div class="product-link">
-                                <ul class="list-inline">
-                                    
-                                    <li><a href="compare.html">Add to compare</a></li>
-                                   
-                                </ul>
-                            </div>
+                            
                             <p class="ptb-20"><?= $item->description ?></p>
                         </div>
                     </div>

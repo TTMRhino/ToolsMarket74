@@ -37,4 +37,11 @@ class Items extends ActiveRecord
         return $this->hasOne(SubCategory::class,['id'=>'subgroup_id']);
     }
 
+    /** получение артикула (vendor) без слешей */
+    public function getVendorClear()
+    {
+        $clearVendor = str_replace('/', '', $this->vendor); 
+        return $clearVendor;
+    }
+
 }

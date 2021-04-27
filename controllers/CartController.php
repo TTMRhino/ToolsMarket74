@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\Items;
 use app\models\Cart;
+use app\models\Order;
+use app\models\Customers;
 
 
 class CartController extends AppController
@@ -87,5 +89,16 @@ class CartController extends AppController
 
         return $this->renderPartial('cartmini',compact($session));
 
+    }
+
+    public function actionCheckout()
+    {
+        $session = \Yii::$app->session;
+        $session->open();
+
+        $order = new Order();
+        $customer = new Customers();
+
+        return $this->render('checkout',compact('session', 'order', 'customer'));
     }
 }

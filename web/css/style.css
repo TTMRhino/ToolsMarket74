@@ -2864,7 +2864,7 @@ p.checkout-coupon input[type="submit"] {
     margin-left: 15px;
 }
 
-.order-button-payment input {
+.order-button-payment button {
     background: #f1ac06;
     border: medium none;
     color: #fff;
@@ -2880,7 +2880,7 @@ p.checkout-coupon input[type="submit"] {
     cursor: pointer;
 }
 
-.order-button-payment input:hover {
+.order-button-payment button:hover {
     background: #444
 }
 
@@ -4369,4 +4369,8 @@ legend {
     margin-left: -15px;
     margin-top: -15px;
     color: #000;
+}
+
+.help-block {
+    color: red;
 }

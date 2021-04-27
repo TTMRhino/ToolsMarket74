@@ -562,7 +562,7 @@
     }
 
     //счетчик колличесва в большой корзине
-    $('#tableId').on('click', '.plus, .minus', function() {
+    $('#table, .box-quantity').on('click', '.minus, .plus', function() {
         let id = $(this).data('id'),
             qty = $(this).data('qty');
 

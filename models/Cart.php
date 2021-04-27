@@ -18,6 +18,7 @@ class Cart extends Model
                 'title' => $item->item,
                 'price' => $item->price,
                 'qty' => $qty,
+                'clearVendor'=>$item->getVendorClear(),
                 'vendor' => $item->vendor
             ];
         }
