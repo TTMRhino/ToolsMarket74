@@ -44,7 +44,7 @@ use yii\helpers\Url;
 
                                                 <td class="product-quantity" >
                                                     <button type="button" data-qty="1" data-id="<?= $item['id']?>" class="btn btn-light plus">+</button>
-                                                        <input id="count<?= $item['id'] ?>" 
+                                                        <input id="count<?= $item['id'] ?>" disabled
                                                             data-id="<?= $item['id']?>"
                                                             type="text" value="<?= $item['qty'] ?>" />
                                                     <button type="button"  class="btn btn-light minus" data-qty="-1" data-id="<?= $item['id']?>">-</button>                                                

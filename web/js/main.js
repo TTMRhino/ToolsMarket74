@@ -605,6 +605,27 @@
 
     });
 
+    /**==========================сортиировака ====================== */
 
+    /*$('.sorter').on('click', function() {
+        let sort = $(this).val();
+        let categoryid = $(this).data('categoryid');
+        let subgroup_id = $(this).data('subgroup_id');
+
+        $.ajax({
+            url: '/shop',
+            type: 'GET',
+            data: { sort: sort, categoryid: categoryid, subgroup_id: subgroup_id },
+            success: function(res) {
+
+                //$('#cartBox').html(res);
+                location = '/shop/index?categoryid=' + categoryid + '&subgroup_id=' + subgroup_id;
+
+            },
+            error: function(res) {
+                alert("Error!");
+            }
+        });
+    });*/
 
 })(jQuery);

@@ -42,14 +42,29 @@ use yii\helpers\Url;
                             </div>
                             <!-- Toolbar Short Area Start -->
                             <div class="main-toolbar-sorter f-right">
+                                
                                 <div class="toolbar-sorter">
-                                    <label>sort by</label>
-                                    <select class="sorter" name="sorter">
-                                        <option value="Position" selected="selected">position</option>
-                                        <option value="Product Name">Product Name</option>
-                                        <option value="Price">Price</option>
-                                    </select>
-                                    <span><a href="#"><i class="fa fa-arrow-up"></i></a></span>
+                                    
+                                    <div class="btn-group btn-sort">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        Сортировать <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="<?= Url::to(
+                                                ['/shop/index', 'categoryid' => $categoryid, 
+                                                'subgroup_id'=>$subgroup_id, 'sort'=>'item'])  ?>">Имя</a></li>
+                                            <li><a href="<?= Url::to(
+                                                ['/shop/index', 'categoryid' => $categoryid, 
+                                                'subgroup_id'=>$subgroup_id,'sort'=>'price'])  ?>">Цена</a></li>                                     
+                                        </ul>
+                                    </div>
+                                  
+                                    <span><a href="<?= Url::to(
+                                        ['/shop/index', 'categoryid' => $categoryid, 
+                                        'subgroup_id'=>$subgroup_id, 'type_sort'=>'DESC', 'sort'=>$sort])  ?>"><i class="fa fa-arrow-up"></i></a></span>
+                                    <span><a href="<?= Url::to(
+                                        ['/shop/index', 'categoryid' => $categoryid, 
+                                        'subgroup_id'=>$subgroup_id, 'type_sort'=>'ASC', 'sort'=>$sort])  ?>"><i class="fa fa-arrow-down"></i></a></span>
                                 </div>
                             </div>
                             <!-- Toolbar Short Area End -->

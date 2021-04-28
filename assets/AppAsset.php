@@ -46,8 +46,8 @@ class AppAsset extends AssetBundle
         'js/jquery.countdown.min.js',
         'js/jquery.nivo.slider.js',
         'js/jquery.fancybox.min.js',
-        'js/bootstrap.min.js',
         'js/popper.js',
+        'js/bootstrap.min.js',        
         'js/plugins.js',
         'js/main.js',
     ];

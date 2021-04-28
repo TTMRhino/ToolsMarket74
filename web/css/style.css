@@ -4374,3 +4374,8 @@ legend {
 .help-block {
     color: red;
 }
+
+.btn-sort {
+    /*overflow: visible;*/
+    position: static;
+}

@@ -8,28 +8,30 @@ use yii\data\Pagination;
 
 class ShopController extends AppController
 {
-    public function actionIndex($categoryid = null,$subgroup_id = null)
+    public function actionIndex($categoryid = null,$subgroup_id = null, $sort = 'price', $type_sort= SORT_DESC)
     {       
+        $type_sort = $type_sort =='ASC'? SORT_ASC : SORT_DESC;
+        
         if(is_null($categoryid) && !is_null($subgroup_id)){
-            $query = Items::find()->where(['subgroup_id'=>$subgroup_id]);// ищеи подгруппы  
+            $query = Items::find()->where(['subgroup_id'=>$subgroup_id])->orderBy([$sort => $type_sort]);// ищем подгруппы  
 
             $categoryOne =  SubCategory::find()->where(['id'=>$subgroup_id])->one();
             $this->setMeta("{$categoryOne->title}::".\Yii::$app->name);         
 
         }elseif(!is_null($categoryid) && is_null($subgroup_id)){
-            $query = Items::find()->where(['maingroup_id'=>$categoryid]);  //ищем группы
+            $query = Items::find()->where(['maingroup_id'=>$categoryid])->orderBy([$sort => $type_sort]);  //ищем группы
             
             $categoryOne =  Category::find()->where(['id'=>$categoryid])->one();
             $this->setMeta("{$categoryOne->title}::".\Yii::$app->name, $categoryOne->key_words, $categoryOne->descrption);
         }else{            
-            $query = Items::find(); //ищем ВСЕ
+            $query = Items::find()->orderBy([$sort => $type_sort]); //ищем ВСЕ
         }    
 
         
         $pages = new Pagination([ 'totalCount'=> $query->count(), 'pageSize'=>12,'forcePageParam'=>false, 'pageSizeParam'=>false ]);
         $items = $query->offset($pages->offset)->limit($pages->limit)->all();
-       
-        return $this->render('index',compact('items','pages'));
+        
+        return $this->render('index',compact('items','pages','categoryid','subgroup_id','sort'));
     }
 
     public function actionView($subgroup_id)
