@@ -16,9 +16,29 @@ class Order extends ActiveRecord
     {
         return[
 
-             [['item_id','customers_id','quantity','price'],'required'],
-            [['item_id','customers_id','item'],'string'],
-            [['price','total','quantity'],'number'],                      
+             [['item_id','customers_id','quantity','price'],'safe'],
+            [['item_id','customers_id','item'],'safe'],
+            [['price','total','quantity'],'safe'],                      
         ];
+    }
+
+    public function saveOrder($items, $customers_id)
+    {
+        foreach($items as $cart){
+            $this->id = null;
+            $this->isNewRecord = true;
+
+            $this->item_id = $cart['id'];
+            $this->item = $cart['title'];
+            $this->price = $cart['price'];
+            $this->quantity = $cart['qty'];
+            $this->total = $cart['qty'] * $cart['price'];
+            $this->customers_id = $customers_id;
+
+            if(!$this->save()){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -32,7 +32,7 @@ class Customers extends ActiveRecord
     {
         return[
             [['name','phone','adress','city'],'required'],
-            [['comments','orders_id','mainindex'],'string'],            
+            [['comments','orders_id','mailindex'],'string'],            
             [['data','status',],'safe']
         ];
     }
@@ -52,5 +52,6 @@ class Customers extends ActiveRecord
         ];
     }
 
+    
     
 }

@@ -1,9 +1,14 @@
-<?php 
+<?php
+
+use app\widgets\Alert;
 use \yii\widgets\ActiveForm;
 ?>
 <div class="checkout-area pt-30  pb-60">
             <div class="container">
+            <?= Alert::widget() ?>
                 <div class="row">
+                    
+                    <?php if(!empty($session['cart'])): ?>
                     <div class="col-lg-6 col-md-6">
                         <?php $form = ActiveForm::begin() ?>
                             <?= $form->field($customer, 'name') ?>
@@ -14,6 +19,7 @@ use \yii\widgets\ActiveForm;
                             <?= $form->field($customer, 'comments')->textarea(['rows'=>5]) ?>
                             
                     </div>
+                    
                             <div class="col-lg-6 col-md-6">
                                     <div class="your-order">
                                         <h3>Your order</h3>
@@ -26,6 +32,7 @@ use \yii\widgets\ActiveForm;
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    
                                                     <?php foreach($session['cart'] as $item): ?>
 
                                                     <tr class="cart_item">
@@ -104,6 +111,7 @@ use \yii\widgets\ActiveForm;
                                 </div>
                     
                         <?php ActiveForm::end() ?>
+                        <?php endif ?>
                 </div>
             </div>
 </div>
