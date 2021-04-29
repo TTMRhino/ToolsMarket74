@@ -66,7 +66,7 @@ class CartController extends AppController
 
         if(\Yii::$app->request->isAjax){
            
-            return $this->renderPartial('carttable',compact($session));
+            return $this->renderPartial('cartTable',compact($session));
         }
 
         return $this->redirect(\Yii::$app->request->referrer);
@@ -109,6 +109,18 @@ class CartController extends AppController
            }else{            
                $transaction->commit();
                \Yii::$app->session->setFlash('success','Ваш заказ принят!');
+
+               try{
+                \Yii::$app->mailer->compose('order',['session' => $session])
+                ->setFrom([\Yii::$app->params['senderEmail'] => \Yii::$app->params['senderName'] ])
+                ->setTo(\Yii::$app->params['adminEmail'])
+                ->setSubject('Заказ Electro74')
+                ->send();
+               }catch (\Swift_TransportException $e){
+                var_dump($e);die;
+               }
+              
+
                $session->remove('cart');
                $session->remove('cart.qty');
                $session->remove('cart.sum');

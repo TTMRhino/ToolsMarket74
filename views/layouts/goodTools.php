@@ -143,7 +143,7 @@ AppAsset::register($this);
 
                                             <!-- Cart Footer Inner Start -->
                                             <div class="cart-footer fix">
-                                                <h5>total :<span class="f-right"><?= $_SESSION['cart.sum'] ?>р.</span></h5>
+                                                <h5>total :<span class="f-right"><?= empty($_SESSION['cart.sum'])?'0':$_SESSION['cart.sum'] ?>р.</span></h5>
                                                 <div class="cart-actions">
                                                     <a class="checkout" href="<?= Url::to(['cart/index']) ?>">Checkout</a>
                                                 </div>

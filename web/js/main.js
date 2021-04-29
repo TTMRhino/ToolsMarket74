@@ -576,6 +576,7 @@
                 location = '/cart/index';
             },
             error: function(res) {
+                console.log(res);
                 alert("Error!");
             }
         });
