@@ -84,7 +84,11 @@ use yii\helpers\Url;
                                                         <div class="pro-actions">
                                                             <div class="actions-secondary">
                                                                 <a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                <a class="add-cart" href="cart.html" data-toggle="tooltip" title="Add to Cart">Add To Cart</a>
+                                                                <a class="add-cart" 
+                                                                href="<?= Url::to(['cart/add','id'=>$item->id]) ?>"
+                                                                data-id="<?= $item->id ?>" 
+                                                                data-toggle="tooltip" 
+                                                                title="Add to Cart">Add To Cart</a>
                                                                 
                                                             </div>
                                                         </div>
@@ -132,7 +136,10 @@ use yii\helpers\Url;
                                                 <div class="pro-actions">
                                                     <div class="actions-secondary">
                                                         <a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                        <a class="add-cart" href="cart.html" data-toggle="tooltip" title="Add to Cart">Add To Cart</a>
+                                                        <a class="add-cart" href="<?= Url::to(['cart/add','id'=>$item->id]) ?>"
+                                                            data-id="<?= $item->id ?>"  
+                                                            data-toggle="tooltip" 
+                                                            title="Add to Cart">Add To Cart</a>
                                                         
                                                     </div>
                                                 </div>

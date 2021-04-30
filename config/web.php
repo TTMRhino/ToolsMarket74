@@ -9,11 +9,19 @@ $config = [
     'bootstrap' => ['log'],
     'defaultRoute' => 'home/index',
     'language' => 'ru',
-    'name' => 'GoodTools',
+    'name' => 'Elektro74',
     'layout' => 'goodTools',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'defaultRoute' => 'main/index',
+            'layout' => 'admin',
+            
+        ],
     ],
     'components' => [
         'assetManager' => [
@@ -37,6 +45,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            'loginUrl' => '/admin/auth/login',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
