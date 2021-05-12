@@ -6,6 +6,7 @@ use app\modules\admin\models\Order;
 use app\modules\admin\models\Items;
 use app\modules\admin\models\SubCategory;
 use app\modules\admin\models\Category;
+use app\modules\admin\models\Customers;
 
 class MainController extends AppAdminController
 {
@@ -15,7 +16,8 @@ class MainController extends AppAdminController
         $items = Items::find()->count();
         $category = Category::find()->count();
         $subCategory = SubCategory::find()->count();
+        $customers = Customers::find()->count();
 
-        return $this->render('index',compact('orders','items','category','subCategory'));
+        return $this->render('index',compact('orders','items','category','subCategory','customers'));
     }
 }
