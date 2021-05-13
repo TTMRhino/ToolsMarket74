@@ -38,10 +38,17 @@ class CustomersController extends AppAdminController
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Customers::find(),
+            'pagination' => ['pageSize' => 15],
+            'sort' =>[
+                'defaultOrder' => [
+                    'id' => SORT_DESC
+                ]
+            ],
         ]);
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,
+            'dataProvider' => $dataProvider,            
+            
         ]);
     }
 
@@ -54,13 +61,14 @@ class CustomersController extends AppAdminController
     public function actionView($id)
     {
        $orderProvider =new ActiveDataProvider([ 'query' => Order::find()->where(['customers_id' => $id])  ]);
-      
+       $orderTotalSum = Order::find()->where(['customers_id' => $id])->select('total')->sum('total');
         
         
-               // var_dump($orderProvider);DIE;
+        // var_dump($orderProvider);DIE;
         return $this->render('view', [
             'model' => $this->findModel($id),
             'orderProvider'=>$orderProvider,
+            'orderTotalSum' => $orderTotalSum,
         ]);
     }
 
@@ -131,4 +139,5 @@ class CustomersController extends AppAdminController
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

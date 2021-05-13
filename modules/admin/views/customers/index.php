@@ -65,6 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                     
                 ],
+                'header' =>"actions",
             ],
         ],
     ]); ?>

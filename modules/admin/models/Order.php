@@ -64,4 +64,5 @@ class Order extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Customers::className(), ['id' => 'customers_id']);
     }
+
 }

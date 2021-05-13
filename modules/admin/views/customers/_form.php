@@ -24,11 +24,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'comments')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
+    <!--<?= $form->field($model, 'data')->textInput() ?>-->
+   
+    <?= $form->field($model, 'status')->dropDownList(['New' =>'New','Work'=>'Work','Done'=>'Done']) ?>
 
-    <?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'orders_id')->textInput() ?>
+   <!-- <?= $form->field($model, 'orders_id')->textInput() ?>-->
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -64,6 +64,7 @@
               </li>
             </ul>
           </li>-->
+
           <li class="nav-item">
             <a href="<?= Url::to('/admin/main/index') ?>" class="nav-link">
               
@@ -74,6 +75,19 @@
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="<?= Url::to('/admin/customers/index')  ?>" class="nav-link">
+              
+            <i class="fas fa-shopping-cart"></i>
+              <p>
+                Заказы                
+              </p>
+            </a>
+          </li>
+
+
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

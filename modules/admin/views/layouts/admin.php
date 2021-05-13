@@ -68,9 +68,9 @@ AdminAsset::register($this);
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
+        <a class="nav-link"  href="<?= Url::to('/admin/customers/index')  ?>">
+        <i class="fas fa-shopping-cart"></i>
+          <span class="badge badge-danger navbar-badge"><?= isset($this->params['new']) ? $this->params['new'] : '0' ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">

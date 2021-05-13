@@ -3,7 +3,8 @@
 namespace app\modules\admin;
 
 use yii\filters\AccessControl;
-
+use app\modules\admin\models\Customers;
+use Yii;
 /**
  * admin module definition class
  */
@@ -19,10 +20,16 @@ class Module extends \yii\base\Module
      */
     public function init()
     {
-        parent::init();
+        //подсчет новых заказов и передача их в шаблон .
+        $newOrders = Customers::find()->where(['status' => 'New'])->select('status')->count();
+        Yii::$app->view->params['new'] = $newOrders;
 
-        // custom initialization code goes here
+        parent::init();
+        
+    
+        
     }
+
 
     public function behaviors()
     {

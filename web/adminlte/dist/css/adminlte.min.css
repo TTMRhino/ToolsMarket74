@@ -5676,10 +5676,11 @@ input[type=submit].btn-block {
     border-bottom-right-radius: .25rem
 }
 
-.page-item.active .page-link {
+.active .page-link,
+.pagination .active {
     z-index: 3;
     color: #fff;
-    background-color: #007bff;
+    background-color: #007bff3b;
     border-color: #007bff
 }
 
@@ -5691,18 +5692,18 @@ input[type=submit].btn-block {
     border-color: #dee2e6
 }
 
-.pagination-lg .page-link {
+.pagination li {
     padding: .75rem 1.5rem;
-    font-size: 1.25rem;
-    line-height: 1.5
+    font-size: 1 rem;
+    line-height: 1;
 }
 
-.pagination-lg .page-item:first-child .page-link {
+.pagination .page-item:first-child .page-link {
     border-top-left-radius: .3rem;
     border-bottom-left-radius: .3rem
 }
 
-.pagination-lg .page-item:last-child .page-link {
+.pagination .page-item:last-child .page-link {
     border-top-right-radius: .3rem;
     border-bottom-right-radius: .3rem
 }
@@ -53984,6 +53985,7 @@ a.text-muted:hover {
 
 .customers-index,
 .customers-view,
-.customers-update {
+.customers-update,
+.customers-create {
     width: 100%;
 }

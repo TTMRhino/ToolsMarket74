@@ -9,7 +9,7 @@ use app\modules\admin\models\Items;
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Customers */
 
-$this->title = $model->name;
+$this->title = "Заказ №{$model->id}";
 $this->params['breadcrumbs'][] = ['label' => 'Customers', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -63,28 +63,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $orderProvider,
         //'filterModel' => $searchBooking,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-            //'item_id',            
-            [              
+            ['class' => 'yii\grid\SerialColumn'],                        
+            /*[              
               'attribute' => 'Товар',
                    
-               'value'=>function($item_id)
+               'value'=>function($order)
                 {
-                    $data=Items::find()->where(['id'=>$item_id])->one();                  
+                    
+                    //$data=Items::find()->where(['id'=>$order->item_id])->one();                  
                     return $data->item;
                 },
-            ],
+                
+            ],*/
+            'item',
             'quantity',
             'price',
             'total',
            
             ['class' => 'yii\grid\ActionColumn','template' =>''],
         ],
-    ]); 
-    
-     
-   
+    ]);
     ?>
+    <h2>И того: <span class="text-primary"><?= $orderTotalSum ?> руб.</span></h2>
 
    
 
