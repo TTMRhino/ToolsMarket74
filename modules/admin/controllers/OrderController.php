@@ -3,17 +3,16 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\modules\admin\models\Customers;
+use app\modules\admin\models\Order;
 use yii\data\ActiveDataProvider;
 use app\modules\admin\controllers\AppAdminController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\modules\admin\models\Order;
 
 /**
- * CustomersController implements the CRUD actions for Customers model.
+ * OrderController implements the CRUD actions for Order model.
  */
-class CustomersController extends AppAdminController
+class OrderController extends AppAdminController
 {
     /**
      * {@inheritdoc}
@@ -31,55 +30,41 @@ class CustomersController extends AppAdminController
     }
 
     /**
-     * Lists all Customers models.
+     * Lists all Order models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Customers::find(),
-            'pagination' => ['pageSize' => 15],
-            'sort' =>[
-                'defaultOrder' => [
-                    'id' => SORT_DESC
-                ]
-            ],
+            'query' => Order::find(),
         ]);
 
         return $this->render('index', [
-            'dataProvider' => $dataProvider,            
-            
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Customers model.
+     * Displays a single Order model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-       $orderProvider =new ActiveDataProvider([ 'query' => Order::find()->where(['customers_id' => $id])  ]);       
-       $orderTotalSum = Order::find()->where(['customers_id' => $id])->select('total')->sum('total');
-        
-        
-        // var_dump($orderProvider);DIE;
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'orderProvider'=>$orderProvider,
-            'orderTotalSum' => $orderTotalSum,
         ]);
     }
 
     /**
-     * Creates a new Customers model.
+     * Creates a new Order model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Customers();
+        $model = new Order();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -91,7 +76,7 @@ class CustomersController extends AppAdminController
     }
 
     /**
-     * Updates an existing Customers model.
+     * Updates an existing Order model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -102,7 +87,8 @@ class CustomersController extends AppAdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['customers/view', 'id' => $model->customers_id]);
+            //return $this->redirect(Yii::$app->request->referrer);
         }
 
         return $this->render('update', [
@@ -111,7 +97,7 @@ class CustomersController extends AppAdminController
     }
 
     /**
-     * Deletes an existing Customers model.
+     * Deletes an existing Order model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -125,19 +111,18 @@ class CustomersController extends AppAdminController
     }
 
     /**
-     * Finds the Customers model based on its primary key value.
+     * Finds the Order model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Customers the loaded model
+     * @return Order the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Customers::findOne($id)) !== null) {
+        if (($model = Order::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

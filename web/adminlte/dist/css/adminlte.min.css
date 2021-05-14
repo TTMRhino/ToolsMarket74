@@ -53983,9 +53983,9 @@ a.text-muted:hover {
 
 /*# sourceMappingURL=adminlte.min.css.map */
 
-.customers-index,
-.customers-view,
-.customers-update,
-.customers-create {
+div[class^="customers-"],
+div[class^="order-"],
+div[class^="category-"],
+div[class^="sub-category-"] {
     width: 100%;
 }

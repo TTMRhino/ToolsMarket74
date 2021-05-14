@@ -72,6 +72,6 @@ class Customers extends \yii\db\ActiveRecord
      */
     public function getOrders()
     {
-        return $this->hasMany(Orders::className(), ['customers_id' => 'id']);
+        return $this->hasMany(Order::class, ['customers_id' => 'id']);
     }
 }

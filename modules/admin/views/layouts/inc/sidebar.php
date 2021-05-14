@@ -86,6 +86,28 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="<?= Url::to('/admin/category/index')  ?>" class="nav-link">
+              
+            <i class="fas fa-object-group"></i>
+              <p>
+                Группы               
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?= Url::to('/admin/sub-category/index')  ?>" class="nav-link">
+              
+            <i class="far fa-object-group"></i>
+              <p>
+                Подгруппы               
+              </p>
+            </a>
+          </li>
+
+          
+
 
 
         </ul>

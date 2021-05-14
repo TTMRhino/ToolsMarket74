@@ -2,6 +2,8 @@
 
 namespace app\modules\admin\models;
 
+use app\modules\admin\models\Category;
+
 use Yii;
 
 /**
@@ -40,7 +42,19 @@ class SubCategory extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'maingroup_id' => 'Maingroup ID',
+            //'maingroup_id' => 'Maingroup ID',
         ];
+    }
+
+    public function getCategory()
+    {      
+        return $this->hasOne(Category::class, ['maingroup_id'=>'id']);
+    }
+
+    public function getCategoryTitle($id)
+    {        
+       $title = Category::findOne(['id'=> $id])->title;       
+        
+        return $title;
     }
 }

@@ -62,7 +62,7 @@ class Order extends \yii\db\ActiveRecord
      */
     public function getCustomers()
     {
-        return $this->hasOne(Customers::className(), ['id' => 'customers_id']);
+        return $this->hasOne(Customers::class, ['id' => 'customers_id']);
     }
 
 }

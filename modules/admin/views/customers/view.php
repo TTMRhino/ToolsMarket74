@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 use yii\grid\GridView;
 use app\modules\admin\models\Items;
@@ -76,11 +77,43 @@ $this->params['breadcrumbs'][] = $this->title;
                 
             ],*/
             'item',
+            [
+                'format' => 'raw',
+                'value'=> function($data)
+                {
+                    return "<div class='pro-img'>
+                            <a href='/img/blog/1.jpg' data-toggle='lightbox'>
+                                <img style='height:70px;'class='img-fluid mb-2' src= '/img/blog/1.jpg' alt='white sample' data-gallery='gallery'/>
+                            </a>
+                          </div>";                          
+                }
+            ],
             'quantity',
             'price',
             'total',
            
-            ['class' => 'yii\grid\ActionColumn','template' =>''],
+            
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete} ',
+                'buttons' => [
+                    'update' => function ($url,$orderProvider) {
+                        return Html::a('<i class="fas fa-pencil-alt"></i>', Url::to(['/admin/order/update', 'id'=>$orderProvider->id]));
+                    },
+                    'view' => function ($url,$orderProvider) {
+                        return Html::a('<i class="far fa-eye"></i>',Url::to(['/admin/order/view', 'id'=>$orderProvider->id]));
+                    },
+                    'delete' => function ($url,$orderProvider) {
+                        return Html::a('<i class="far fa-trash-alt"></i>', 
+                            Url::to(['/admin/order/delete', 'id'=>$orderProvider->id]),
+                            ['data'=>['confirm' => 'Вы уверены  что хотите удалить запись?',
+                            'method' => 'post',]
+                            ]);
+                    },
+                    
+                ],
+                'header' =>"actions",
+            ],
         ],
     ]);
     ?>
