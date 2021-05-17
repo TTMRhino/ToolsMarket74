@@ -65,4 +65,11 @@ class Order extends \yii\db\ActiveRecord
         return $this->hasOne(Customers::class, ['id' => 'customers_id']);
     }
 
+    public function getVendorItem($item_id)    
+    {
+        $item = Items::findOne(['id' => $item_id]);
+        //$imgVendor = str_replace('/','',$item->vendor);
+        return $item->getImageVendor();
+    }
+
 }

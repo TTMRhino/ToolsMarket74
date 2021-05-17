@@ -12,7 +12,7 @@ use yii\helpers\Url;
                         <!-- Thumbnail Large Image start -->
                         <div class="tab-content">
                             <div id="thumb1" class="tab-pane active">
-                                <a data-fancybox="images" href="/img/products/l<?= $item->getVendorClear() ?>.jpg"><img src="/img/products/1.jpg" alt="product-view"></a>
+                                <a data-fancybox="images" href="/img/products/l<?= $item->getVendorClear() ?>.jpg"><img src="/img/products/l<?= $item->getVendorClear() ?>.jpg" alt="product-view"></a>
                             </div>
                            <!-- <div id="thumb2" class="tab-pane">
                                 <a data-fancybox="images" href="/img/products/2.jpg"><img src="/img/products/2.jpg" alt="product-view"></a>

@@ -6,7 +6,7 @@
     <!-- Brand Logo -->
     <a href="<?= \Yii::$app->homeUrl ?>" target="_blank" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">Electro74</span>
     </a>
 
     <!-- Sidebar -->
@@ -102,6 +102,16 @@
             <i class="far fa-object-group"></i>
               <p>
                 Подгруппы               
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="<?= Url::to('/admin/items/index') ?>" class="nav-link">
+              
+            <i class="fas fa-tools"></i>
+              <p>
+                Товар               
               </p>
             </a>
           </li>

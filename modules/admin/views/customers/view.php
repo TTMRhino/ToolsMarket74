@@ -65,25 +65,18 @@ $this->params['breadcrumbs'][] = $this->title;
         //'filterModel' => $searchBooking,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],                        
-            /*[              
-              'attribute' => 'Товар',
-                   
-               'value'=>function($order)
-                {
-                    
-                    //$data=Items::find()->where(['id'=>$order->item_id])->one();                  
-                    return $data->item;
-                },
-                
-            ],*/
+            
             'item',
             [
                 'format' => 'raw',
                 'value'=> function($data)
                 {
+                    $imgVendor = $data->getVendorItem($data['item_id']); 
+                   
                     return "<div class='pro-img'>
-                            <a href='/img/blog/1.jpg' data-toggle='lightbox'>
-                                <img style='height:70px;'class='img-fluid mb-2' src= '/img/blog/1.jpg' alt='white sample' data-gallery='gallery'/>
+                            <a href='/img/products/l". $imgVendor . ".jpg' data-toggle='lightbox'>
+                                <img style='height:70px;'class='img-fluid mb-2' 
+                                src= '/img/products/l". $imgVendor .".jpg' alt='white sample' data-gallery='gallery'/>
                             </a>
                           </div>";                          
                 }

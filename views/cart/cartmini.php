@@ -11,7 +11,7 @@ use yii\helpers\Url;
                     <!-- Cart Box Start -->
                     <div class="single-cart-box">
                         <div class="cart-img">
-                            <a href="#"><img src="/img/menu/1.jpg" alt="cart-image"></a>
+                            <a href="#"><img src="/img/products/l<?= str_replace('/','',$cartItem['vendor']) ?>.jpg" alt="cart-image"></a>
                         </div>
                         <div class="cart-content">
                             <h6><a href="<?= Url::to(['cart/index']) ?>"><?= $cartItem['title'] ?></a></h6>

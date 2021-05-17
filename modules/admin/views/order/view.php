@@ -13,8 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+  
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
@@ -31,6 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'item_id',
+            [
+                'attribute'=> 'item',
+                'format' => 'raw',
+                'value'=> function($model)
+                {
+                    
+                    $imgVendor = $model->getVendorItem($model->item_id); 
+                   
+                    return "<div class='pro-img'>
+                            <a href='/img/products/l". $imgVendor . ".jpg' data-toggle='lightbox'>
+                                <img style='height:70px;'class='img-fluid mb-2' 
+                                src= '/img/products/l". $imgVendor .".jpg' alt='white sample' data-gallery='gallery'/>
+                            </a>
+                          </div>";                          
+                }
+            ],
             'quantity',
             'customers_id',
             'price',

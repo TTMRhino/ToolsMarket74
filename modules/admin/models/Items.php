@@ -60,4 +60,10 @@ class Items extends \yii\db\ActiveRecord
             'top_product' => 'Top Product',
         ];
     }
+
+
+    public function getImageVendor()
+    {
+       return str_replace('/','',$this->vendor);
+    }
 }

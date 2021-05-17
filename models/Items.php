@@ -43,5 +43,9 @@ class Items extends ActiveRecord
         $clearVendor = str_replace('/', '', $this->vendor); 
         return $clearVendor;
     }
+    public function getImageVendor()
+    {
+       return str_replace('/','',$this->vendor);
+    }
 
 }

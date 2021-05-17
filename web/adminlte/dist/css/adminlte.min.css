@@ -53986,6 +53986,7 @@ a.text-muted:hover {
 div[class^="customers-"],
 div[class^="order-"],
 div[class^="category-"],
-div[class^="sub-category-"] {
+div[class^="sub-category-"],
+div[class^="items-"] {
     width: 100%;
 }
