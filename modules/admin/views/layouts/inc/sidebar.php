@@ -116,6 +116,16 @@
             </a>
           </li>
 
+          <li class="nav-item">
+            <a href="<?= Url::to('/admin/items/upload') ?>" class="nav-link">
+              
+            <i class="fas fa-file-upload"></i>
+              <p>
+                Загрузка прайса              
+              </p>
+            </a>
+          </li>
+
           
 
 

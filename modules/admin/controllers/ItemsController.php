@@ -8,6 +8,12 @@ use app\modules\admin\models\ItemsSearch;
 use app\modules\admin\controllers\AppAdminController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\models\SubCategory;
+
+
+use app\modules\admin\models\UploadForm;
+use yii\web\UploadedFile;
+
 
 /**
  * ItemsController implements the CRUD actions for Items model.
@@ -124,4 +130,33 @@ class ItemsController extends AppAdminController
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionSubgroupByMaingroup($maingroup_id)
+    {       
+        if(\Yii::$app->request->isAjax){ 
+           
+            $data = Subcategory::find()->where(['maingroup_id' => $maingroup_id])->all();  
+                 
+            return $this->renderPartial('dropdown_subcategory',compact('data'));           
+        }
+
+        return $this->redirect(\Yii::$app->request->referrer);
+    }
+
+
+     /** Загрузка файла */
+     public function actionUpload()
+     {
+         $model = new UploadForm();
+ 
+         if (Yii::$app->request->isPost) {
+             $model->file = UploadedFile::getInstance($model, 'file');
+             if ($model->upload()) {
+                 // file is uploaded successfully
+                 return;
+             }
+         }
+ 
+         return $this->render('upload', ['model' => $model]);
+     }
 }

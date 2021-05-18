@@ -42,7 +42,7 @@ class SubCategory extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            //'maingroup_id' => 'Maingroup ID',
+            'maingroup_id' => 'Maingroup ID',
         ];
     }
 
@@ -53,8 +53,9 @@ class SubCategory extends \yii\db\ActiveRecord
 
     public function getCategoryTitle($id)
     {        
-       $title = Category::findOne(['id'=> $id])->title;       
-        
-        return $title;
+       $title = Category::findOne(['id'=> $id])->title;        
+       return $title;
     }
+
+    
 }

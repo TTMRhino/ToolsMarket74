@@ -4,6 +4,8 @@ namespace app\modules\admin\models;
 
 use Yii;
 
+
+
 /**
  * This is the model class for table "items".
  *
@@ -66,4 +68,7 @@ class Items extends \yii\db\ActiveRecord
     {
        return str_replace('/','',$this->vendor);
     }
+
+
+   
 }
