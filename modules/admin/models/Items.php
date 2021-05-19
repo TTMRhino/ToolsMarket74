@@ -36,11 +36,12 @@ class Items extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price', 'pur_price', 'old_price'], 'number'],
-            [['description'], 'string'],
-            [['top_product'], 'integer'],
-            [['vendor'], 'string', 'max' => 20],
-            [['maingroup_id', 'subgroup_id', 'item'], 'string', 'max' => 200],
+            //[['price'], 'number'],
+            [['pur_price', 'old_price','price','top_product','description','vendor','maingroup_id', 'subgroup_id', 'item'],'safe'],
+            //[['description'], 'string'],
+            //[['top_product'], 'integer'],
+            //[['vendor'], 'string', 'max' => 20],
+            //[['maingroup_id', 'subgroup_id', 'item'], 'string', 'max' => 200],
         ];
     }
 

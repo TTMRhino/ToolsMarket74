@@ -27,7 +27,7 @@ class ItemsController extends AppAdminController
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'delete' => ['POST'],
                 ],
@@ -153,7 +153,11 @@ class ItemsController extends AppAdminController
              $model->file = UploadedFile::getInstance($model, 'file');
              if ($model->upload()) {
                  // file is uploaded successfully
-                 return;
+                 \Yii::$app->session->setFlash('success', "Успешно загружен! ");
+                return $this->redirect(['upload' => $model]);
+                
+                 //return $this->render('upload', ['model' => $model]);
+                 
              }
          }
  

@@ -40,9 +40,9 @@ class UploadForm extends Model
         
         if ( $xlsx = SimpleXLSX::parse($xmlFile) ) {
 
-            var_dump($xlsx);die;
+            //var_dump($xlsx);die;
             
-          /*  $mainGroupId =0;
+            $mainGroupId =0;
             $subGroupId =0;
         
            
@@ -52,51 +52,77 @@ class UploadForm extends Model
                 
                 if ($row[1] ==="Группа" ){
                     
-                  
-                    $stmt = $connection->prepare("INSERT INTO `main_group` (`title`) VALUES  (:title)");            
-                    $stmt->execute([':title'=>$row[0]]);
-        
-                    $mainGroupId = $connection->lastInsertId();
-        
-                    echo " <h3>Группа $row[0] добавлена в БД. </h3>";
+                  $findCategory = Category::findOne(['title' => $row[0]]);
+                    
+                    if (is_null($findCategory)){
+                        //die('Нет такой сточки');
+                        $main_group = new Category();
+                        $main_group->title = $row[0];
+                        $main_group->save();
+
+                        $mainGroupId = $main_group->id;
+                        //echo " <h3>Группа $row[0] добавлена в БД. </h3>";
+                    }else{
+                        
+                        //echo " <h3 style='color:red'>Группу $row[0] пропускаем. </h3>";
+                        $mainGroupId =  $findCategory->id;
+                    }                    
+                   
         
                 }elseif(empty($row[1])){       
+
+                    $findSubCategory = SubCategory::findOne(['title' => $row[0]]);
+
+                    if (is_null($findSubCategory)){
+                        $sub_group = new SubCategory();
+                        $sub_group->title = $row[0];
+                        $sub_group->maingroup_id = $mainGroupId;
+                        $sub_group->save();
+
+                        $subGroupId = $sub_group->id;
+                        //echo "<h4>Под - Группа $row[0] добавлена в БД. </h4>";
+                    }else{
+                        //echo "<h4 style='color:red' >Под - Группу $row[0] пропускаем. </h4>";
+                        $subGroupId =   $findSubCategory->id;
+                    }                   
                     
-                    $stmt = $connection->prepare("INSERT INTO `sub_group` (`title`,`maingroup_id`) VALUES (:title, :mainGroup)");
-                    $stmt->execute([':title'=> $row[0], ':mainGroup'=>  $mainGroupId]);
-        
-                    $subGroupId = $connection->lastInsertId();
-        
-                    echo "<h4>Под - Группа $row[0] добавлена в БД. </h4>";
-                    
-                }else{
+                }else{                   
                    
-                    $stmt = $connection->prepare("INSERT INTO `items` 
-                    (`vendor`, `maingroup_id`, `subgroup_id`, `item`, `price`, `pur_price`, `description`, `old_price`) VALUES 
-                    (:vendor,  :mainGroup,     :subGroup,     :item,  :price,  :pur_price, 'Описания нет', :old_price )"); 
+                    $findItem = Items::findOne(['item' => $row[0]]);
+                    if (is_null($findItem)){
+                        $item = new Items();
+                        $item->vendor = $row[1];
+                        $item->maingroup_id = $mainGroupId;
+                        $item->subgroup_id = $subGroupId;
+                        $item->item = $row[0];
+                        $item->price = $row[2];
+                        $item->pur_price = $row[2];
+                        $item->old_price = $row[2];
+                        $item->save();
         
-                    $stmt->execute([
-                        ':vendor'=>$row[1], 
-                        ':mainGroup'=> $mainGroupId, 
-                        ':subGroup'=>$subGroupId,
-                        ':item'=>$row[0], 
-                        ':price'=>$row[2],
-                        ':pur_price'=>$row[2],
-                       
-                        ':old_price'=>$row[2],                                        
-                    ]);         
-                        echo "<p>товар $row[0] добавлен  </p>";
+                        //echo "<p>товар $row[0] добавлен  </p>";
+                    }else{
+                        $findItem->old_price = $findItem->price;
+                        $findItem->price = $row[2];
+                        $findItem->update();
+                        //echo "<p style='color:green'>товар $row[0] пропускаем.  </p>";
+                    }
+
+                    
                 }
               
             }
         
-            echo "<h2> Готово </h2>";
+            //echo "<h2> Готово </h2>";
         
             /*echo "<pre>";
             print_r( $xlsx->rows() );
             echo "</pre>";*/
+            return true;         
+            
         } else {
             echo SimpleXLSX::parseError();
+            return false;
         }
     }
 }
