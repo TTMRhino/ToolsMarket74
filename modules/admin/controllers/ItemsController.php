@@ -151,13 +151,13 @@ class ItemsController extends AppAdminController
  
          if (Yii::$app->request->isPost) {
              $model->file = UploadedFile::getInstance($model, 'file');
-             if ($model->upload()) {
+             if ($message = $model->upload()) {
                  // file is uploaded successfully
-                 \Yii::$app->session->setFlash('success', "Успешно загружен! ");
-                return $this->redirect(['upload' => $model]);
+                 \Yii::$app->session->setFlash('success_uploaded', "Успешно загружен!...Но это не точно. ");
                 
-                 //return $this->render('upload', ['model' => $model]);
-                 
+                //return $this->redirect(['upload' => $model]);
+                return $this->render('upload', ['model' => $model,'message'=>$message]);               
+               
              }
          }
  

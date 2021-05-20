@@ -25,9 +25,9 @@ class UploadForm extends Model
     {
         if ($this->validate()) {
             //var_dump($this->file->tempName);die;
-            $this->priceToBd($this->file->tempName);
+            
             //$this->file->saveAs('uploads/' . $this->file->baseName . '.' . $this->file->extension);
-            return true;
+            return $this->priceToBd($this->file->tempName);
         } else {
             return false;
         }
@@ -46,7 +46,7 @@ class UploadForm extends Model
             $subGroupId =0;
         
            
-            $arr=[];
+            $message=[];
         
             foreach($xlsx->rows() as $row){
                 
@@ -61,10 +61,10 @@ class UploadForm extends Model
                         $main_group->save();
 
                         $mainGroupId = $main_group->id;
-                        //echo " <h3>Группа $row[0] добавлена в БД. </h3>";
+                        array_push($message, " <h3>Группа $row[0] добавлена в БД. </h3>");
                     }else{
                         
-                        //echo " <h3 style='color:red'>Группу $row[0] пропускаем. </h3>";
+                        //array_push($message," <h3 style='color:red'>Группу $row[0] пропускаем. </h3>");
                         $mainGroupId =  $findCategory->id;
                     }                    
                    
@@ -80,9 +80,9 @@ class UploadForm extends Model
                         $sub_group->save();
 
                         $subGroupId = $sub_group->id;
-                        //echo "<h4>Под - Группа $row[0] добавлена в БД. </h4>";
+                        array_push($message, "<h4>Под - Группа $row[0] добавлена в БД. </h4>");
                     }else{
-                        //echo "<h4 style='color:red' >Под - Группу $row[0] пропускаем. </h4>";
+                        //array_push($message, "<h4 style='color:red' >Под - Группу $row[0] пропускаем. </h4>");
                         $subGroupId =   $findSubCategory->id;
                     }                   
                     
@@ -100,12 +100,19 @@ class UploadForm extends Model
                         $item->old_price = $row[2];
                         $item->save();
         
-                        //echo "<p>товар $row[0] добавлен  </p>";
+                        array_push($message, "<p>товар $row[0] добавлен  </p>");
                     }else{
-                        $findItem->old_price = $findItem->price;
-                        $findItem->price = $row[2];
-                        $findItem->update();
-                        //echo "<p style='color:green'>товар $row[0] пропускаем.  </p>";
+                        if($findItem->price <> $row[2]){
+                            array_push($message, "<p style='color:green'>товар $row[0] - Цена изменена (c $findItem->price на $row[2]).  </p>");
+                            
+                            $findItem->old_price = $findItem->price;
+                            $findItem->price = $row[2];
+                            $findItem->update();
+
+                            
+                        }
+                        
+                        //array_push($message, "<p style='color:green'>товар $row[0] пропускаем.  </p>");
                     }
 
                     
@@ -113,15 +120,16 @@ class UploadForm extends Model
               
             }
         
-            //echo "<h2> Готово </h2>";
+            array_push($message, "<h2> Готово </h2>");
         
             /*echo "<pre>";
             print_r( $xlsx->rows() );
             echo "</pre>";*/
-            return true;         
+            return $message;         
             
         } else {
             echo SimpleXLSX::parseError();
+            \Yii::$app->session->setFlash('error_uploaded', "Ошибка! Что то пошло не так. ");
             return false;
         }
     }

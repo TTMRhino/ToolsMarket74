@@ -63,10 +63,7 @@ use yii\helpers\Url;
                             
                             <div class="box-quantity">
                                 <form action="#">
-                                   <!-- <button type="button" data-qty="1" data-id="<?= $item->id?>" class="btn btn-light plus">+</button>
-                                    <input id="count<?= $item->id ?>" data-id="<?= $item->id?>" type="text" value="<?= $_SESSION['cart'][$item->id]['qty'] ?>"/>
-                                    <button type="button"  class="btn btn-light minus" data-qty="-1" data-id="<?= $item->id?>">-</button>
-                                    -->
+                                  
                                     <a class="add-cart" href="<?= Url::to(['cart/add','id'=>$item->id]) ?>">в корзину</a>
                                 </form>
                             </div>
