@@ -37,7 +37,7 @@ use yii\helpers\Url;
                                 <ul class="list-inline nav">
                                     <li><a data-toggle="tab" href="#grid-view"><i class="fa fa-th"></i></a></li>
                                     <li><a  class="active" data-toggle="tab" href="#list-view"><i class="fa fa-list-ul"></i></a></li>
-                                    <li><span class="grid-item-list"> Items 1-12 of 13</span></li>
+                                    <li><span class="grid-item-list"> товары 1-12 of 13</span></li>
                                 </ul>
                             </div>
                             <!-- Toolbar Short Area Start -->
@@ -104,10 +104,10 @@ use yii\helpers\Url;
                                                         <p><span class="price"><?= $item->price ?></span><del class="prev-price"><?= $item->old_price ?></del></p>
                                                         <div class="pro-actions">
                                                             <div class="actions-secondary">
-                                                                <a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                                                                <!--<a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>-->
                                                                 <a class="add-cart add-to-cart" href="<?= Url::to(['cart/add','id'=>$item->id]) ?>" 
                                                                 data-id="<?= $item->id ?>"
-                                                                data-toggle="tooltip" title="Add to Cart">Add To Cart</a>
+                                                                data-toggle="tooltip" title="Add to Cart">В корзину</a>
                                                                 
                                                             </div>
                                                         </div>
@@ -185,14 +185,20 @@ use yii\helpers\Url;
                                                     <i class="fa fa-star"></i>
                                                 </div>                                
                                                 <h4><a href="<?= Url::to(['product/view', 'vendor' => $item->vendor]) ?>"><?= $item->item ?></a></h4>
-                                                <p><span class="price"><?= $item->price ?>р.</span><del class="prev-price"><?= $item->old_price ?>р.</del></p>
+                                                <p>
+                                                    <span class="price"><?= $item->price ?>р.</span>
+                                                    <?php  if ($item->price != $item->old_price): ?>
+                                                        <del class="prev-price"><?= $item->old_price ?>р.</del>
+                                                    <?php endif ?>
+                                                    
+                                                </p>
                                                 <p><?= $item->description ?></p>
                                                 <div class="pro-actions">
                                                     <div class="actions-secondary">
-                                                        <a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>
+                                                        <!--<a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>-->
                                                         <a class="add-cart add-to-cart" href="<?= Url::to(['cart/add','id'=>$item->id]) ?>"
                                                         data-id="<?= $item->id ?>"
-                                                         data-toggle="tooltip" title="Add to Cart">Add To Cart</a>
+                                                         data-toggle="tooltip" title="Add to Cart">В корзину</a>
                                                        
                                                     </div>
                                                 </div>
@@ -266,13 +272,13 @@ use yii\helpers\Url;
                             </ul>
 
                             <div class="toolbar-sorter-footer">
-                                <label>show</label>
+                                <label>Показать:</label>
                                 <select class="sorter" name="sorter">
                                     <option value="Position" selected="selected">12</option>
                                     <option value="Product Name">15</option>
                                     <option value="Price">30</option>
                                 </select>
-                                <span>per page</span>
+                                <span>страниц</span>
                             </div>
                         </div>
                         <!--Breadcrumb and Page Show End -->

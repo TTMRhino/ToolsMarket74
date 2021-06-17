@@ -4,7 +4,7 @@ use yii\helpers\Url;
 <!-- Cart Main Area Start -->
 <div class="cart-main-area pb-80 pb-sm-50">
             <div class="container">
-               <h2 class="text-capitalize sub-heading">cart</h2>
+               <h2 class="text-capitalize sub-heading">Корзина</h2>
                 <div class="row" >
                     <div class="col-md-12">
                     <?php if(!empty($_SESSION['cart'])): ?>
@@ -19,12 +19,12 @@ use yii\helpers\Url;
                                     <table >
                                         <thead>
                                             <tr>
-                                                <th class="product-thumbnail">Image</th>
-                                                <th class="product-name">Product</th>
-                                                <th class="product-price">Price</th>
-                                                <th class="product-quantity">Quantity</th>
-                                                <th class="product-subtotal">Total</th>
-                                                <th class="product-remove">Remove</th>
+                                                <th class="product-thumbnail">Фото</th>
+                                                <th class="product-name">Товар</th>
+                                                <th class="product-price">Цена</th>
+                                                <th class="product-quantity">Количество</th>
+                                                <th class="product-subtotal">Итог</th>
+                                                <th class="product-remove">Удалить</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -43,11 +43,11 @@ use yii\helpers\Url;
                                                 <td class="product-price"><span class="amount"><?= $item['price'] ?>р.</span></td>
 
                                                 <td class="product-quantity" >
-                                                    <button type="button" data-qty="1" data-id="<?= $item['id']?>" class="btn btn-light plus">+</button>
+                                                    <button type="button" data-qty="-1" data-id="<?= $item['id']?>" class="btn btn-light minus">-</button>
                                                         <input id="count<?= $item['id'] ?>" disabled
                                                             data-id="<?= $item['id']?>"
                                                             type="text" value="<?= $item['qty'] ?>" />
-                                                    <button type="button"  class="btn btn-light minus" data-qty="-1" data-id="<?= $item['id']?>">-</button>                                                
+                                                    <button type="button"  class="btn btn-light plus" data-qty="1" data-id="<?= $item['id']?>">+</button>                                                
                                                 </td>
 
                                                 <td class="product-subtotal"><?= $item['price'] * $item['qty'] ?></td>
@@ -74,12 +74,12 @@ use yii\helpers\Url;
                                 <!-- Cart Totals Start -->
                                 <div class="col-lg-4 col-md-12">
                                     <div class="cart_totals">
-                                        <h2>итого</h2>
+                                        <h2>Итого</h2>
                                         <br />
                                         <table>
                                             <tbody>
                                                 <tr class="cart-subtotal">
-                                                    <th>Subtotal</th>
+                                                    <th>Подитог:</th>
                                                     <td><span class="amount">$215.00</span></td>
                                                 </tr>
                                                 <tr class="order-total">
@@ -91,7 +91,7 @@ use yii\helpers\Url;
                                             </tbody>
                                         </table>
                                         <div class="wc-proceed-to-checkout">
-                                            <a href="<?= Url::to('checkout') ?>">Proceed to Checkout</a>
+                                            <a href="<?= Url::to('checkout') ?>">Оформить заказ</a>
                                         </div>
                                     </div>
                                 </div>

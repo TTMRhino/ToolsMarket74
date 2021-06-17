@@ -51,7 +51,7 @@ AppAsset::register($this);
                         <!-- Header Top left Start -->                        
                         <div class="col-lg-4 col-md-12 d-center">
                             <div class="header-top-left">
-                                <img src="img/icon/call.png" alt="">Call Us : +11 222 3333
+                                <img src="img/icon/call.png" alt=""> +7(9000) - 741-791
                             </div>                        
                         </div>
                         <!-- Header Top left End -->
@@ -60,7 +60,7 @@ AppAsset::register($this);
                         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                             <div class="search-box-view">
                                 <form action="<?= Url::to('shop/search', $schema = true) ?>" method="get">
-                                    <input type="text" class="email" placeholder="Search Your Product" name="q">
+                                    <input type="text" class="email" placeholder="Поиск ..." name="q">
                                     <button type="submit" class="submit"></button>
                                 </form>
                             </div>                                           
@@ -98,11 +98,11 @@ AppAsset::register($this);
                                         <li><a href="<?= Url::home() ?>">Домой<i class="fa "></i></a>
                                           
                                         </li>
-                                        <li><a href="about.html">О нас</a></li>                                        
+                                        <li><a href="<?= Url::toRoute('site/about') ?>">О нас</a></li>                                        
                                         <li><a href="<?= Url::toRoute('shop/index', $schema = true) ?>">Товары<i class="fa"></i></a></li>                                        
                                       
                                         
-                                        <li><a href="contact.html">Контакты</a></li>                                        
+                                        <li><a href="<?= Url::toRoute('site/contact') ?>">Контакты</a></li>                                        
                                     </ul>
                                 </nav>
                             </div>
@@ -143,9 +143,9 @@ AppAsset::register($this);
 
                                             <!-- Cart Footer Inner Start -->
                                             <div class="cart-footer fix">
-                                                <h5>total :<span class="f-right"><?= empty($_SESSION['cart.sum'])?'0':$_SESSION['cart.sum'] ?>р.</span></h5>
+                                                <h5>итого :<span class="f-right"><?= empty($_SESSION['cart.sum'])?'0':$_SESSION['cart.sum'] ?>р.</span></h5>
                                                 <div class="cart-actions">
-                                                    <a class="checkout" href="<?= Url::to(['cart/index']) ?>">Checkout</a>
+                                                    <a class="checkout" href="<?= Url::to(['cart/index']) ?>">Корзина</a>
                                                 </div>
                                             </div>
                                             <!-- Cart Footer Inner End -->
@@ -197,12 +197,12 @@ AppAsset::register($this);
                         <!-- Single Footer Start -->
                         <div class="col-lg-4  col-md-7 col-sm-6">
                             <div class="single-footer">
-                                <h3>Contact us</h3>
+                                <h3>Контакты</h3>
                                 <div class="footer-content">
                                     <div class="loc-address">
-                                        <span><i class="fa fa-map-marker"></i>184 Main Rd E, St Albans VIC 3021, Australia.</span>
-                                        <span><i class="fa fa-envelope-o"></i>Mail Us : yourinfo@example.com</span>
-                                        <span><i class="fa fa-phone"></i>Phone: + 00 254 254565 54</span>
+                                        <span><i class="fa fa-map-marker"></i>г. Челябинск, ул. Маслобазовая 5, оф. 8</span>
+                                        <span><i class="fa fa-envelope-o"></i>почта : goodmarket74@mail.ru</span>
+                                        <span><i class="fa fa-phone"></i>Тел: +7 (9000) -741 -791</span>
                                     </div>
                                     <div class="payment-mth"><a href="#"><img class="img" src="img/footer/1.png" alt="payment-image"></a></div>
                                 </div>
@@ -210,72 +210,16 @@ AppAsset::register($this);
                         </div>
                         <!-- Single Footer Start -->
                         <!-- Single Footer Start -->
-                        <div class="col-lg-2  col-md-5 col-sm-6 footer-full">
-                            <div class="single-footer">
-                                <h3 class="footer-title">Information</h3>
-                                <div class="footer-content">
-                                    <ul class="footer-list">
-                                        <li><a href="#">Site Map</a></li>
-                                        <li><a href="#">Specials</a></li>
-                                        <li><a href="#">Jobs</a></li>
-                                        <li><a href="#">Delivery Information</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Privacy Policy</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- Single Footer Start -->
                         <!-- Single Footer Start -->
-                        <div class="col-lg-2  col-md-4 col-md-4 col-sm-6 footer-full">
-                            <div class="single-footer">
-                                <h3 class="footer-title">My Account</h3>
-                                <div class="footer-content">
-                                    <ul class="footer-list">
-                                        <li><a href="account.html">My account</a></li>
-                                        <li><a href="#">Checkout</a></li>
-                                        <li><a href="#">Login</a></li>
-                                        <li><a href="#">address</a></li>
-                                        <li><a href="#">Order status</a></li>
-                                        <li><a href="#">Site Map</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- Single Footer Start -->
                         <!-- Single Footer Start -->
-                        <div class="col-lg-2 col-md-4 col-sm-6 footer-full">
-                            <div class="single-footer">
-                                <h3 class="footer-title">customer service</h3>
-                                <div class="footer-content">
-                                    <ul class="footer-list">
-                                        <li><a href="account.html">My account</a></li>
-                                        <li><a href="#">New</a></li>
-                                        <li><a href="#">Gift Cards</a></li>
-                                        <li><a href="#">Return Policy</a></li>
-                                        <li><a href="#">Your Orders</a></li>
-                                        <li><a href="#">Subway</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- Single Footer Start -->
                         <!-- Single Footer Start -->
-                        <div class="col-lg-2 col-md-4 col-sm-6 footer-full">
-                            <div class="single-footer">
-                                <h3 class="footer-title">Let Us Help You</h3>
-                                <div class="footer-content">
-                                    <ul class="footer-list">
-                                        <li><a href="#">Your Account</a></li>
-                                        <li><a href="#">Your Orders</a></li>
-                                        <li><a href="#">Shipping</a></li>
-                                        <li><a href="#">Amazon Prime</a></li>
-                                        <li><a href="#">Replacements</a></li>
-                                        <li><a href="#">Manage </a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- Single Footer Start -->
                     </div>
                     <!-- Row End -->

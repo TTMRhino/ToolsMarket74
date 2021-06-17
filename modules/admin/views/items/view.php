@@ -54,7 +54,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'pur_price',
             'description:ntext',
             'old_price',
-            'top_product',
+            [
+                'attribute'=> 'top_product', 
+                'value'=>function($model)
+                {
+
+                    if ($model->top_product == 1){
+                        return 'Да';
+                    }else{
+                        return "Нет";
+                    }
+                }
+            ],
+            //'top_product',
         ],
     ]) ?>
 

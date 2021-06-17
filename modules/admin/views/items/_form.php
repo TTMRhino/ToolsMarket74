@@ -35,6 +35,7 @@ use app\modules\admin\models\SubCategory;
     <?= $form->field($model, 'old_price')->textInput() ?>
 
     <?= $form->field($model, 'top_product')->textInput() ?>
+    <?= $form->field($model, 'top_product')->dropDownList([1 =>'Да', 0=>'Нет']); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
