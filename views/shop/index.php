@@ -101,7 +101,12 @@ use yii\helpers\Url;
                                                             <i class="fa fa-star"></i>
                                                         </div>                                
                                                         <h4><a href="<?= Url::to(['product/view', 'vendor' => $item->vendor]) ?>"><?= $item->item ?></a></h4>
-                                                        <p><span class="price"><?= $item->price ?></span><del class="prev-price"><?= $item->old_price ?></del></p>
+                                                        <p>
+                                                            <span class="price"><?= $item->price ?>р.</span>
+                                                                <?php  if ($item->price < $item->old_price): ?>
+                                                                    <del class="prev-price"><?= $item->old_price ?>р.</del>
+                                                                <?php endif ?>
+                                                        </p>
                                                         <div class="pro-actions">
                                                             <div class="actions-secondary">
                                                                 <!--<a href="wishlist.html" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-heart"></i></a>-->
@@ -187,7 +192,7 @@ use yii\helpers\Url;
                                                 <h4><a href="<?= Url::to(['product/view', 'vendor' => $item->vendor]) ?>"><?= $item->item ?></a></h4>
                                                 <p>
                                                     <span class="price"><?= $item->price ?>р.</span>
-                                                    <?php  if ($item->price != $item->old_price): ?>
+                                                    <?php  if ($item->price < $item->old_price): ?>
                                                         <del class="prev-price"><?= $item->old_price ?>р.</del>
                                                     <?php endif ?>
                                                     

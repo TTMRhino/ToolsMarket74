@@ -81,7 +81,7 @@ use yii\helpers\Url;
                                 <p>
                                     <span class="price"><?= $product->price ?>р.</span>
 
-                                    <?php  if ($product->price != $product->old_price): ?>
+                                    <?php  if ($product->price < $product->old_price): ?>
                                         <del class="prev-price"><?= $product->old_price ?>р.</del>
                                     <?php endif ?>
                                 </p>

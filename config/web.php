@@ -22,6 +22,11 @@ $config = [
             'layout' => 'admin',
             
         ],
+        'api' =>[
+            'basePath' => '@app/modules/api',
+            'class' => \app\modules\api\Module::class,
+                       
+        ],
     ],
     'components' => [
         'assetManager' => [
@@ -37,6 +42,9 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'VNAIVd54poTTqpNYmpnvaIeuZu04tsEi',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
             'baseUrl' => '',
         ],
         'cache' => [
@@ -83,8 +91,34 @@ $config = [
             'rules' => [
                 'shop/<categoryid:\d+><page:\d+>' => 'shop/index',
                 'shop/<categoryid:\d+>' => 'shop/index',
+
                
-               
+                [
+                    'class' => \yii\rest\UrlRule::class,                    
+                    'controller' => ['api/items'],
+                    'pluralize' => false,                   
+                ],
+                [
+                    'class' => \yii\rest\UrlRule::class,                    
+                    'controller' => ['api/order'],
+                    'pluralize' => false,                   
+                ],
+                [
+                    'class' => \yii\rest\UrlRule::class,                    
+                    'controller' => ['api/maingroup'],
+                    'pluralize' => false,                   
+                ], 
+                [
+                    'class' => \yii\rest\UrlRule::class,                    
+                    'controller' => ['api/subgroup'],
+                    'pluralize' => false,                   
+                ], 
+                [
+                    'class' => \yii\rest\UrlRule::class,                    
+                    'controller' => ['api/customers'],
+                    'pluralize' => false,                   
+                ], 
+                      
                 
             ],
         ],
