@@ -6,7 +6,9 @@ use yii\filters\ContentNegotiator;
 use yii\web\Response;
 use yii\data\ActiveDataProvider;
 
-use app\models\Items;
+
+use app\modules\api\models\SubGroup;
+
 
 class SubgroupController extends ActiveController
 {
@@ -47,6 +49,14 @@ class SubgroupController extends ActiveController
        
         return $behaviors;
     }   
+
+
+    public function actionGetByMainId($id)
+    { 
+        return new ActiveDataProvider([
+            'query' => SubGroup::find()->where(['maingroup_id' => $id]),
+        ]);
+    }
   
     
 

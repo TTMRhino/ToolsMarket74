@@ -11,10 +11,16 @@ use app\modules\api\models\Items;
 class ItemsController extends ActiveController
 {
     public $modelClass = 'app\modules\api\models\Items';
+    
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
 
    public function behaviors()
     {    	
         $behaviors = parent::behaviors();
+        
       
         $behaviors= [
         [

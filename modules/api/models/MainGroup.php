@@ -11,6 +11,7 @@ use Yii;
  * @property string|null $title
  * @property string|null $descrption
  * @property string|null $key_words
+ * 
  *
  * @property SubGroup[] $subGroups
  */
@@ -32,6 +33,7 @@ class MainGroup extends \yii\db\ActiveRecord
         return [
             [['title'], 'string', 'max' => 150],
             [['descrption', 'key_words'], 'string', 'max' => 500],
+           
         ];
     }
 
@@ -55,6 +57,6 @@ class MainGroup extends \yii\db\ActiveRecord
      */
     public function getSubGroups()
     {
-        return $this->hasMany(SubGroup::className(), ['maingroup_id' => 'id']);
+        return $this->hasMany(SubGroup::class, ['maingroup_id' => 'id']);
     }
 }

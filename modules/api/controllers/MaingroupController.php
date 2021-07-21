@@ -6,7 +6,8 @@ use yii\filters\ContentNegotiator;
 use yii\web\Response;
 use yii\data\ActiveDataProvider;
 
-use app\models\Items;
+use app\modules\api\models\MainGroup;
+use app\modules\api\models\SubGroup;
 
 class MaingroupController extends ActiveController
 {
