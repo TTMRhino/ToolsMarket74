@@ -21,11 +21,11 @@ class ItemsController extends ActiveController
     {    	
         $behaviors = parent::behaviors();
         
-      
+        
         $behaviors= [
         [
             'class' => \yii\filters\Cors::class,
-                'cors' => [
+               'cors' => [
                     // restrict access to
                     'Origin' => ['*'],
                // Allow  methods
@@ -61,4 +61,38 @@ class ItemsController extends ActiveController
             'query' => Items::find()->where(['top_product' => 1]),
         ]);
     }
+
+    public function actionIndex()
+    {        
+        return new ActiveDataProvider([
+            'query' => Items::find(),
+            'pagination' =>[
+                'pageSize' => 20
+            ]
+        ]);
+    }
+
+    public function actionGetByMaingroup($id)
+    {        
+        return new ActiveDataProvider([
+            'query' => Items::find()->where(['maingroup_id' => $id ]),
+            'pagination' =>[
+                'pageSize' => 20
+            ]
+        ]);
+    }
+
+    public function actionGetBySubgroup($id)
+    {        
+        return new ActiveDataProvider([
+            'query' => Items::find()->where(['subgroup_id' => $id ]),
+            'pagination' =>[
+                'pageSize' => 20
+            ]
+        ]);
+    }
+
+   
+
+
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace app\modules\admin\models;
+namespace app\modules\api\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\admin\models\Items;
+use app\modules\api\models\Items;
 
 /**
  * ItemsSearch represents the model behind the search form of `app\modules\admin\models\Items`.
