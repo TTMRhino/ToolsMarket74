@@ -72,7 +72,7 @@ class ItemsController extends ActiveController
         ]);
     }
 
-    public function actionGetByMaingroup($id)
+    public function actionGetByMaingroup($id,$sort)
     {        
         return new ActiveDataProvider([
             'query' => Items::find()->where(['maingroup_id' => $id ]),
@@ -82,7 +82,7 @@ class ItemsController extends ActiveController
         ]);
     }
 
-    public function actionGetBySubgroup($id)
+    public function actionGetBySubgroup($id,$sort)
     {        
         return new ActiveDataProvider([
             'query' => Items::find()->where(['subgroup_id' => $id ]),
