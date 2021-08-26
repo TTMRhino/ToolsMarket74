@@ -3,6 +3,7 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use app\modules\admin\models\Items;
 
 /**
  * This is the model class for table "orders".
@@ -69,6 +70,12 @@ class Order extends \yii\db\ActiveRecord
     {
         $item = Items::findOne(['id' => $item_id]);
         //$imgVendor = str_replace('/','',$item->vendor);
+        /*echo"<pre>";
+        echo"------------------aqaaaaaaaaaaa------------<br />";
+        
+        print_r($item_id);
+        echo"</pre>";
+        die;*/
         return $item->getImageVendor();
     }
 

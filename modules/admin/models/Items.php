@@ -66,7 +66,8 @@ class Items extends \yii\db\ActiveRecord
 
 
     public function getImageVendor()
-    {
+    {   
+       
        return str_replace('/','',$this->vendor);
     }
 
